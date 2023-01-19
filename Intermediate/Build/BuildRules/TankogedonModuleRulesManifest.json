@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"D:\\source\\repos\\UnrealEngine\\Tankogedon\\Source\\Tankogedon\\Tankogedon.Build.cs",
+		"D:\\source\\repos\\UnrealEngine\\Tankogedon\\Source\\Tankogedon.Target.cs",
+		"D:\\source\\repos\\UnrealEngine\\Tankogedon\\Source\\TankogedonEditor.Target.cs"
+	],
+	"EngineVersion": "5.0.3"
+}

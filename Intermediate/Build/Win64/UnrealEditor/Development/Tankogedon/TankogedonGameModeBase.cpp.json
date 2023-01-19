@@ -1,0 +1,19 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\source\\repos\\unrealengine\\tankogedon\\source\\tankogedon\\tankogedongamemodebase.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\source\\repos\\unrealengine\\tankogedon\\intermediate\\build\\win64\\tankogedoneditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "d:\\source\\repos\\unrealengine\\tankogedon\\intermediate\\build\\win64\\unrealeditor\\development\\tankogedon\\definitions.tankogedon.h",
+            "d:\\source\\repos\\unrealengine\\tankogedon\\source\\tankogedon\\tankogedongamemodebase.h",
+            "d:\\epicgames\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamemodebase.h",
+            "d:\\epicgames\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
+            "d:\\epicgames\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\serverstatreplicator.generated.h",
+            "d:\\epicgames\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\gamemodebase.generated.h",
+            "d:\\source\\repos\\unrealengine\\tankogedon\\intermediate\\build\\win64\\unrealeditor\\inc\\tankogedon\\tankogedongamemodebase.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

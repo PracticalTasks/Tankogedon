@@ -1,0 +1,14 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\source\\repos\\unrealengine\\tankogedon\\source\\tankogedon\\tankogedon.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\source\\repos\\unrealengine\\tankogedon\\intermediate\\build\\win64\\tankogedoneditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "d:\\source\\repos\\unrealengine\\tankogedon\\intermediate\\build\\win64\\unrealeditor\\development\\tankogedon\\definitions.tankogedon.h",
+            "d:\\source\\repos\\unrealengine\\tankogedon\\source\\tankogedon\\tankogedon.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

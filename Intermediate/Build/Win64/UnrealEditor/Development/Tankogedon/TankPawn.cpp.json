@@ -1,0 +1,23 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "d:\\source\\repos\\unrealengine\\tankogedon\\source\\tankogedon\\tankpawn.cpp",
+        "ProvidedModule": "",
+        "PCH": "d:\\source\\repos\\unrealengine\\tankogedon\\intermediate\\build\\win64\\tankogedoneditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "d:\\source\\repos\\unrealengine\\tankogedon\\intermediate\\build\\win64\\unrealeditor\\development\\tankogedon\\definitions.tankogedon.h",
+            "d:\\source\\repos\\unrealengine\\tankogedon\\source\\tankogedon\\tankpawn.h",
+            "d:\\source\\repos\\unrealengine\\tankogedon\\intermediate\\build\\win64\\unrealeditor\\inc\\tankogedon\\tankpawn.generated.h",
+            "d:\\epicgames\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\components\\boxcomponent.h",
+            "d:\\epicgames\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\components\\shapecomponent.h",
+            "d:\\epicgames\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\shapecomponent.generated.h",
+            "d:\\epicgames\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\boxcomponent.generated.h",
+            "d:\\epicgames\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\springarmcomponent.h",
+            "d:\\epicgames\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\springarmcomponent.generated.h",
+            "d:\\epicgames\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\camera\\cameracomponent.h",
+            "d:\\epicgames\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\cameracomponent.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
