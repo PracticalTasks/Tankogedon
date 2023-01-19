@@ -18,5 +18,6 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-	void MoveRight(float Value);
+	void GetForwardValue(float Value);
+	void GetRightValue(float Value);
 };

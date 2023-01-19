@@ -47,5 +47,7 @@ protected:
 	float targetForwardAxisValue = 0.0f;
 
 private: 
+	void MoveForward(float DeltaTime);
 	void MoveRight(float DeltaTime);
+	
 };
