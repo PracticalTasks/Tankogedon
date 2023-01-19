@@ -1,12 +1,8 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "TankPawn.generated.h"
-//#include "Pawn.generated.h"
-
 
 class UStaticMeshComponent;
 UCLASS()
@@ -48,6 +44,4 @@ protected:
 
 private: 
 	void MoveUp(float DeltaTime);
-
-
 };
