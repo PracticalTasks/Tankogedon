@@ -5,8 +5,8 @@ void ATankPlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
 
-	InputComponent->BindAxis("MoveForward", this,
-		&ATankPlayerController::MoveForward);
+	InputComponent->BindAxis("MoveRight", this,
+		&ATankPlayerController::MoveRight);
 }
 
 void ATankPlayerController::BeginPlay()
@@ -15,10 +15,10 @@ void ATankPlayerController::BeginPlay()
 	TankPawn = Cast<ATankPawn>(GetPawn());
 }
 
-void ATankPlayerController::MoveForward(float Value)
+void ATankPlayerController::MoveRight(float Value)
 {
 	if (TankPawn)
 	{
-		TankPawn->MoveForward(Value);
+		TankPawn->MoveRight(Value);
 	}
 }
