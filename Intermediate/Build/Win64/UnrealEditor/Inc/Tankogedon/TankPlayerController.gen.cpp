@@ -43,7 +43,6 @@ void EmptyLinkFunctionForGeneratedCodeTankPlayerController() {}
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ATankPlayerController_Statics::Class_MetaDataParams[] = {
-		{ "Comment", "/**\n * \n */" },
 		{ "HideCategories", "Collision Rendering Transformation" },
 		{ "IncludePath", "TankPlayerController.h" },
 		{ "ModuleRelativePath", "TankPlayerController.h" },
@@ -94,9 +93,9 @@ void EmptyLinkFunctionForGeneratedCodeTankPlayerController() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Tankogedon_Source_Tankogedon_TankPlayerController_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ATankPlayerController, ATankPlayerController::StaticClass, TEXT("ATankPlayerController"), &Z_Registration_Info_UClass_ATankPlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ATankPlayerController), 2635948682U) },
+		{ Z_Construct_UClass_ATankPlayerController, ATankPlayerController::StaticClass, TEXT("ATankPlayerController"), &Z_Registration_Info_UClass_ATankPlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ATankPlayerController), 1171174284U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Tankogedon_Source_Tankogedon_TankPlayerController_h_3504461383(TEXT("/Script/Tankogedon"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Tankogedon_Source_Tankogedon_TankPlayerController_h_229842424(TEXT("/Script/Tankogedon"),
 		Z_CompiledInDeferFile_FID_Tankogedon_Source_Tankogedon_TankPlayerController_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Tankogedon_Source_Tankogedon_TankPlayerController_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
