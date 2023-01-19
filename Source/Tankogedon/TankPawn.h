@@ -15,8 +15,8 @@ public:
 	ATankPawn();
 
 	virtual void Tick(float DeltaTime) override;
-	void MoveForward(float Value);
-	void MoveRight(float Value);
+	void GetForwardValue(float Value);
+	void GetRightValue(float Value);
 
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
@@ -47,5 +47,5 @@ protected:
 	float targetForwardAxisValue = 0.0f;
 
 private: 
-	void MoveUp(float DeltaTime);
+	void MoveRight(float DeltaTime);
 };

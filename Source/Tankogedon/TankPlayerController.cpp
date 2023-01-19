@@ -19,6 +19,6 @@ void ATankPlayerController::MoveRight(float Value)
 {
 	if (TankPawn)
 	{
-		TankPawn->MoveRight(Value);
+		TankPawn->GetRightValue(Value);
 	}
 }
