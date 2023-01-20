@@ -90,6 +90,7 @@ void ATankPawn::MoveRotationRight(float DeltaTime)
 	FRotator newRotation = FRotator(0.0f, yawRotation, 0.0f);
 	SetActorRotation(newRotation);
 
+
 }
 
 void ATankPawn::TurretRotation(float DeltaTime)
