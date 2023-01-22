@@ -17,6 +17,9 @@ void ATankPlayerController::SetupInputComponent()
 
 	InputComponent->BindAction("Fire", EInputEvent::IE_Pressed,
 		this, &ATankPlayerController::Fire);
+
+	InputComponent->BindAction("FireSpecial", EInputEvent::IE_Pressed,
+		this, &ATankPlayerController::FireSpecial);
 }
 
 void ATankPlayerController::Tick(float DeltaSeconds)
@@ -37,7 +40,7 @@ void ATankPlayerController::Tick(float DeltaSeconds)
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-	//bShowMouseCursor = true;
+	bShowMouseCursor = true;
 	TankPawn = Cast<ATankPawn>(GetPawn());
 }
 
@@ -71,6 +74,12 @@ void ATankPlayerController::Fire()
 	{
 		TankPawn->Fire(); 
 	}
+}
 
-
+void ATankPlayerController::FireSpecial()
+{
+	if (TankPawn)
+	{
+		TankPawn->FireSpecial();
+	}
 }

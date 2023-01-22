@@ -42,6 +42,21 @@ void ACannon::Fire()
 		&ACannon::Reload, FireRate, false);
 }
 
+void ACannon::FireSpecial()
+{
+	if (!IsReadyToFire())
+	{
+		return;
+	}
+
+	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Green, "Fire special");
+
+	bReadyToFire = false;
+
+	GetWorld()->GetTimerManager().SetTimer(ReloadTimer, this,
+		&ACannon::Reload, FireRate, false);
+}
+
 bool ACannon::IsReadyToFire()
 {
 	return bReadyToFire;

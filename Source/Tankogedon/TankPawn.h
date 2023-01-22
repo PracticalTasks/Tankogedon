@@ -22,6 +22,7 @@ public:
 	void GetRotationRightValue(float Value);
 
 	void Fire();
+	void FireSpecial();
 	void SetupCannon(TSubclassOf<ACannon> newCannonClass);
 
 protected:
