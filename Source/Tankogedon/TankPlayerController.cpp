@@ -14,6 +14,9 @@ void ATankPlayerController::SetupInputComponent()
 
 	InputComponent->BindAxis("RotationRight", this,
 		&ATankPlayerController::GetRotateRightValue);
+
+	InputComponent->BindAction("Fire", EInputEvent::IE_Pressed,
+		this, &ATankPlayerController::Fire);
 }
 
 void ATankPlayerController::Tick(float DeltaSeconds)
@@ -34,7 +37,7 @@ void ATankPlayerController::Tick(float DeltaSeconds)
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-	bShowMouseCursor = true;
+	//bShowMouseCursor = true;
 	TankPawn = Cast<ATankPawn>(GetPawn());
 }
 
@@ -60,4 +63,14 @@ void ATankPlayerController::GetRotateRightValue(float Value)
 	{
 		TankPawn->GetRotationRightValue(Value);
 	}
+}
+
+void ATankPlayerController::Fire()
+{
+	if (TankPawn)
+	{
+		TankPawn->Fire(); 
+	}
+
+
 }

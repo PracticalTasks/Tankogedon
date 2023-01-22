@@ -11,6 +11,8 @@
     <None Include="..\..\Source\TankogedonEditor.Target.cs">
       <Filter>Source</Filter>
     </None>
+    <None Include="..\..\.gitattributes" />
+    <None Include="..\..\.gitignore" />
     <Filter Include="Config">
       <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
     </Filter>
@@ -23,6 +25,9 @@
     <None Include="..\..\Config\DefaultGame.ini">
       <Filter>Config</Filter>
     </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
     <Filter Include="Config\HoloLens">
       <UniqueIdentifier>{4C8DD267-CDE7-336F-8602-F5F485D22BAB}</UniqueIdentifier>
     </Filter>
@@ -32,6 +37,18 @@
     <Filter Include="Source\Tankogedon">
       <UniqueIdentifier>{4AB58991-BD27-3799-88C5-BEA0AD39B2BC}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\Tankogedon\Cannon.cpp">
+      <Filter>Source\Tankogedon</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Tankogedon\Cannon.h">
+      <Filter>Source\Tankogedon</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Tankogedon\GameStruct.cpp">
+      <Filter>Source\Tankogedon</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Tankogedon\GameStruct.h">
+      <Filter>Source\Tankogedon</Filter>
+    </ClInclude>
     <None Include="..\..\Source\Tankogedon\Tankogedon.Build.cs">
       <Filter>Source\Tankogedon</Filter>
     </None>

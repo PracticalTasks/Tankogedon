@@ -24,5 +24,7 @@ protected:
 	void GetRightValue(float Value);
 	void GetRotateRightValue(float Value);
 
+	void Fire();
+
 	FVector MousePos;
 };
