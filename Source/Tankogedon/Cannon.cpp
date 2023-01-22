@@ -55,6 +55,7 @@ void ACannon::FireSpecial()
 
 	GetWorld()->GetTimerManager().SetTimer(ReloadTimer, this,
 		&ACannon::Reload, FireRate, false);
+
 }
 
 bool ACannon::IsReadyToFire()
