@@ -23,17 +23,19 @@ ACannon::ACannon()
 
 void ACannon::Fire()
 {
-	if (!IsReadyToFire())
+	if (!IsReadyToFire() || shells < 1)
 	{
 		return;
 	}
 	if (CannonType == ECannonType::FireProjecttile)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Purple, "Fire projectile");
+		--shells;
 	}
 	else
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, "Fire trace");
+		--shells;
 	}
 
 	bReadyToFire = false;

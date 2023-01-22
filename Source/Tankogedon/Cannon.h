@@ -43,6 +43,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
 	float Damage = 1.0f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
+	float shells = 5.0f;
+
 	bool bReadyToFire = true;
 	FTimerHandle ReloadTimer;
 };
