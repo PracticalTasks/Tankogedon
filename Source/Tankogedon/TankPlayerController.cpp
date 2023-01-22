@@ -66,6 +66,7 @@ void ATankPlayerController::GetRotateRightValue(float Value)
 	{
 		TankPawn->GetRotationRightValue(Value);
 	}
+
 }
 
 void ATankPlayerController::Fire()
