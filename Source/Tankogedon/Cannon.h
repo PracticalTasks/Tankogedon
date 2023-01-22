@@ -44,8 +44,12 @@ protected:
 	float Damage = 1.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
-	float shells = 5.0f;
+	int shells = 5;
 
 	bool bReadyToFire = true;
 	FTimerHandle ReloadTimer;
+
+private:
+	int8_t countShells = 5;
+
 };

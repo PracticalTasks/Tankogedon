@@ -23,25 +23,31 @@ ACannon::ACannon()
 
 void ACannon::Fire()
 {
-	if (!IsReadyToFire() || shells < 1)
+	if (shells < 1)
 	{
 		return;
 	}
+
+	if (countShells < 1)
+	{
+		countShells = 5;
+		--shells;
+		return;
+	}
+
 	if (CannonType == ECannonType::FireProjecttile)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Purple, "Fire projectile");
-		--shells;
+		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Purple, "Fire projectile");
+		--countShells;
 	}
 	else
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, "Fire trace");
-		--shells;
+		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, "Fire trace");
+		--countShells;
 	}
 
-	bReadyToFire = false;
-
 	GetWorld()->GetTimerManager().SetTimer(ReloadTimer, this, 
-		&ACannon::Reload, FireRate, false);
+		&ACannon::Fire, FireRate, false);
 
 }
 
@@ -52,7 +58,7 @@ void ACannon::FireSpecial()
 		return;
 	}
 
-	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Green, "Fire special");
+	GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::Green, "Fire special");
 
 	bReadyToFire = false;
 
@@ -70,7 +76,7 @@ void ACannon::Reload()
 {
 	bReadyToFire = true;
 }
-
+	
 // Called when the game starts or when spawned
 void ACannon::BeginPlay()
 {
