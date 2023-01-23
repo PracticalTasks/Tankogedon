@@ -37,6 +37,12 @@
     <Filter Include="Source\Tankogedon">
       <UniqueIdentifier>{4AB58991-BD27-3799-88C5-BEA0AD39B2BC}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\Tankogedon\AmmoBox.cpp">
+      <Filter>Source\Tankogedon</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Tankogedon\AmmoBox.h">
+      <Filter>Source\Tankogedon</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\Tankogedon\Cannon.cpp">
       <Filter>Source\Tankogedon</Filter>
     </ClCompile>
@@ -47,6 +53,12 @@
       <Filter>Source\Tankogedon</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\Tankogedon\GameStruct.h">
+      <Filter>Source\Tankogedon</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Tankogedon\Projectile.cpp">
+      <Filter>Source\Tankogedon</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Tankogedon\Projectile.h">
       <Filter>Source\Tankogedon</Filter>
     </ClInclude>
     <None Include="..\..\Source\Tankogedon\Tankogedon.Build.cs">

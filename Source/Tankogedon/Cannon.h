@@ -31,8 +31,11 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
 	class UArrowComponent* ProjectileSpawnPoint;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
 	ECannonType CannonType = ECannonType::FireProjecttile;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
+	TSubclassOf <class AProjectile> ProjectileClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
 	float FireRate = 1.0f;
