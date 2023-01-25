@@ -6,7 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "GameStruct.h"
 #include "Components/ArrowComponent.h"
-//#include "Projectile.h"
+//#include "TraceInsights/Public/Insights/Common/PaintUtils.h"
 #include "Cannon.generated.h"
 
 UCLASS()
@@ -15,26 +15,33 @@ class TANKOGEDON_API ACannon : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	ACannon();
 
 	void Fire();
 	void FireSpecial();
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
+	ECannonType CannonType = ECannonType::FireProjecttile;
+
+private:
 	bool IsReadyToFire();
 	void Reload();
+	void AuxiliaryFireFunct();
+
+private:
+	bool bReadyToFire = true;
+	FTimerHandle ReloadTimer;
 
 protected:
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
 	class UStaticMeshComponent* CannonMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
 	class UArrowComponent* ProjectileSpawnPoint;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
-	ECannonType CannonType = ECannonType::FireProjecttile;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
 	TSubclassOf <class AProjectile> ProjectileClass;
@@ -50,7 +57,4 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
 	float shells = 50.0f;
-
-	bool bReadyToFire = true;
-	FTimerHandle ReloadTimer;
 };

@@ -11,6 +11,7 @@ enum class ECannonType : uint8
 {
 	FireTrace = 0 UMETA(DisplayName = "Use trace"),
 	FireProjecttile = 1 UMETA(DisplayName = "Use projecttile"),
+	FireAltProjecttile = 2 UMETA(DisplayName = "Use alter projectile"),
 };
 UCLASS()
 class TANKOGEDON_API UGameStruct : public UObject

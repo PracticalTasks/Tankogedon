@@ -8,9 +8,8 @@
 #include "Components/SceneComponent.h"
 #include "DrawDebugHelpers.h"
 #include "Logging/LogMacros.h"
-//#include "TimerManager.h"
+#include <winuser.h>
 
-// Sets default values
 ACannon::ACannon()
 {
 	PrimaryActorTick.bCanEverTick = false;
@@ -26,6 +25,18 @@ ACannon::ACannon()
 	ProjectileSpawnPoint->SetupAttachment(CannonMesh);
 }
 
+void ACannon::AuxiliaryFireFunct()
+{
+	--shells;
+	AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>
+		(ProjectileClass, ProjectileSpawnPoint->GetComponentLocation(),
+			ProjectileSpawnPoint->GetComponentRotation());
+	if (Projectile)
+	{
+		Projectile->Start();
+	}
+}
+
 void ACannon::Fire()
 {
 	if (!IsReadyToFire() || shells < 1)
@@ -35,16 +46,13 @@ void ACannon::Fire()
 	if (CannonType == ECannonType::FireProjecttile)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Purple, "Fire projectile");
-		--shells;
-		//FTransform projectileTransform(ProjectileSpawnPoint->GetComponentRotation(),
-		//	ProjectileSpawnPoint->GetComponentLocation(), FVector(1));
-		AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>
-			(ProjectileClass, ProjectileSpawnPoint->GetComponentLocation(),
-				ProjectileSpawnPoint->GetComponentRotation());
-		if (Projectile)
-		{
-			Projectile->Start();
-		}
+		AuxiliaryFireFunct();
+
+	}
+	else if(CannonType == ECannonType::FireAltProjecttile)
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Yellow, "Fire alter projectile");
+		AuxiliaryFireFunct();
 	}
 	else
 	{

@@ -25,9 +25,20 @@ public:
 	void FireSpecial();
 	void SetupCannon(TSubclassOf<ACannon> newCannonClass);
 
+public:
+	UPROPERTY();
+	ACannon* Cannon;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
+	TSubclassOf<ACannon> EquippedCannonClass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
+	TSubclassOf<ACannon> SecondCannonClass;
+
 protected:
 	virtual void BeginPlay() override;
 
+protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
 	UStaticMeshComponent* BodyMesh;
 
@@ -43,17 +54,11 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
 	class UCameraComponent* Camera;
 
-	UPROPERTY();
-	ACannon* Cannon;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
-	TSubclassOf<ACannon> EquippedCannonClass;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
-	TSubclassOf<ACannon> SecondCannonClass;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
 	class UArrowComponent* CannonSetupPoint;
+
+	UPROPERTY();
+	class ATankPlayerController* TankController;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement");
 	float MoveSpeed = 100.0f;
@@ -63,10 +68,6 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement | Rotation");
 	float TurretRotationInterpolationKey = 0.1f;
-
-	UPROPERTY();
-	class ATankPlayerController* TankController;
-
 
 private: 
 	float targetForwardAxisValue = 0.0f;

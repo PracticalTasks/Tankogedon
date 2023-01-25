@@ -1,6 +1,7 @@
 #include "TankPlayerController.h"
 #include "TankPawn.h"
 #include "DrawDebugHelpers.h"
+#include "GameStruct.h"
 
 void ATankPlayerController::SetupInputComponent()
 {
@@ -20,6 +21,9 @@ void ATankPlayerController::SetupInputComponent()
 
 	InputComponent->BindAction("FireSpecial", EInputEvent::IE_Pressed,
 		this, &ATankPlayerController::FireSpecial);
+
+	InputComponent->BindAction("SwapCannon", EInputEvent::IE_Pressed,
+		this, &ATankPlayerController::swapCannon);
 }
 
 void ATankPlayerController::Tick(float DeltaSeconds)
@@ -83,4 +87,22 @@ void ATankPlayerController::FireSpecial()
 	{
 		TankPawn->FireSpecial();
 	}
+}
+
+void ATankPlayerController::swapCannon()
+{
+	if (!TankPawn->Cannon)
+	{
+		return;
+	}
+	if (TankPawn->Cannon->CannonType == ECannonType::FireProjecttile)
+	{
+		TankPawn->SetupCannon(TankPawn->SecondCannonClass);
+		TankPawn->Cannon->CannonType = ECannonType::FireAltProjecttile;
+	}
+	else
+	{
+		TankPawn->SetupCannon(TankPawn->EquippedCannonClass);
+	}
+	
 }

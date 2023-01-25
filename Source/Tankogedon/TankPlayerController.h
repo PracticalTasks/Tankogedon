@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "Cannon.h"
 #include "TankPlayerController.generated.h"
 
 UCLASS()
@@ -12,6 +13,9 @@ class TANKOGEDON_API ATankPlayerController : public APlayerController
 public:
 	UPROPERTY()
 	class ATankPawn* TankPawn;
+
+	//UPROPERTY()
+	//class ACannon* Cannon;
 	
 	virtual void SetupInputComponent() override;
 	virtual void Tick(float DeltaSeconds) override;
@@ -26,6 +30,7 @@ protected:
 
 	void Fire();
 	void FireSpecial();
+	void swapCannon();
 
 	FVector MousePos;
 };
