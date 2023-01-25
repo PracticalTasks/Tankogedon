@@ -12,9 +12,7 @@ class TANKOGEDON_API AAmmoBox : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	AAmmoBox();
-
 
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Companents")
