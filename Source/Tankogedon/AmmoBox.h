@@ -15,6 +15,7 @@ public:
 	// Sets default values for this actor's properties
 	AAmmoBox();
 
+
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Companents")
 	class UStaticMeshComponent* AmmoMesh;
