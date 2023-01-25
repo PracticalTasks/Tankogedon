@@ -20,6 +20,10 @@ ATankPawn::ATankPawn()
 	TurretMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TurretMesh"));
 	TurretMesh->SetupAttachment(BodyMesh);
 
+	CannonSetupPoint = CreateDefaultSubobject<UArrowComponent>
+		(TEXT("CannonSetupPoint"));
+	CannonSetupPoint->AttachToComponent(TurretMesh, FAttachmentTransformRules::KeepRelativeTransform);
+
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArm->SetupAttachment(BoxCollision);
 	SpringArm->bDoCollisionTest = false;
@@ -29,10 +33,6 @@ ATankPawn::ATankPawn()
 
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(SpringArm);
-
-	CannonSetupPoint = CreateDefaultSubobject<UArrowComponent>
-		(TEXT("CannonSetupPoint"));
-	CannonSetupPoint->SetupAttachment(TurretMesh);
 }
 
 void ATankPawn::Tick(float DeltaTime)

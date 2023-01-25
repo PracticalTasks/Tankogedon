@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "GameStruct.h"
+#include "Components/ArrowComponent.h"
+//#include "Projectile.h"
 #include "Cannon.generated.h"
 
 UCLASS()
@@ -41,7 +43,7 @@ protected:
 	float FireRate = 1.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
-	float FireRange = 1000.0f;
+	float FireRange = 2000.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
 	float Damage = 1.0f;

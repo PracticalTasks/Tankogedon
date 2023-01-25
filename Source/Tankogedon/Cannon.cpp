@@ -4,6 +4,11 @@
 #include "Cannon.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/ArrowComponent.h"
+#include "Projectile.h"
+#include "Components/SceneComponent.h"
+#include "DrawDebugHelpers.h"
+#include "Logging/LogMacros.h"
+//#include "TimerManager.h"
 
 // Sets default values
 ACannon::ACannon()
@@ -15,7 +20,7 @@ ACannon::ACannon()
 	RootComponent = SceneComp;
 
 	CannonMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("CannonMesh"));
-	CannonMesh->SetupAttachment(SceneComp);
+	CannonMesh->SetupAttachment(RootComponent);
 
 	ProjectileSpawnPoint = CreateDefaultSubobject<UArrowComponent>(TEXT("ArrowComponent"));
 	ProjectileSpawnPoint->SetupAttachment(CannonMesh);
@@ -31,11 +36,46 @@ void ACannon::Fire()
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Purple, "Fire projectile");
 		--shells;
+		//FTransform projectileTransform(ProjectileSpawnPoint->GetComponentRotation(),
+		//	ProjectileSpawnPoint->GetComponentLocation(), FVector(1));
+		AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>
+			(ProjectileClass, ProjectileSpawnPoint->GetComponentLocation(),
+				ProjectileSpawnPoint->GetComponentRotation());
+		if (Projectile)
+		{
+			Projectile->Start();
+		}
 	}
 	else
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, "Fire trace");
 		--shells;
+		FHitResult hitResult;
+		FCollisionQueryParams traceParams = FCollisionQueryParams();
+		traceParams.AddIgnoredActor(this);
+		traceParams.bReturnPhysicalMaterial = false;
+		FVector Start = ProjectileSpawnPoint->GetComponentLocation();
+		FVector End = Start + ProjectileSpawnPoint->GetForwardVector() * FireRange;
+		
+		if (GetWorld()->LineTraceSingleByChannel(hitResult, Start, End, 
+			ECollisionChannel::ECC_Visibility, traceParams))
+		{
+			DrawDebugLine(GetWorld(), Start, hitResult.Location,
+				FColor::Red, false, 1.0f, 0, 5);
+			if (hitResult.GetActor())
+			{
+				AActor* OverlappedActor = hitResult.GetActor();
+				UE_LOG(LogTemp, Warning, TEXT("Overlapped actor: %s"),
+					*OverlappedActor->GetName());
+				OverlappedActor->Destroy();
+			}
+		}
+		else
+		{
+			DrawDebugLine(GetWorld(), Start, End,
+				FColor::Yellow, false, 1.0f, 0, 5);
+		}
+
 	}
 
 	bReadyToFire = false;

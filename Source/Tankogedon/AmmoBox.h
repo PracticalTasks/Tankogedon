@@ -16,11 +16,15 @@ public:
 	AAmmoBox();
 
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Companents")
+	class UStaticMeshComponent* AmmoMesh;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Companents")
+	TSubclassOf<class ACannon> CannonClass;
+
+	UFUNCTION()
+	void OnMeshOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor*
+		OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool
+		bFromSweep, const FHitResult& SweepResult);
 
 };
