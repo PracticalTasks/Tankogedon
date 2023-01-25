@@ -61,7 +61,7 @@ void ACannon::Fire()
 			ECollisionChannel::ECC_Visibility, traceParams))
 		{
 			DrawDebugLine(GetWorld(), Start, hitResult.Location,
-				FColor::Red, false, 1.0f, 0, 5);
+				FColor::Red, false, 0.2f, 0, 5);
 			if (hitResult.GetActor())
 			{
 				AActor* OverlappedActor = hitResult.GetActor();
@@ -73,7 +73,7 @@ void ACannon::Fire()
 		else
 		{
 			DrawDebugLine(GetWorld(), Start, End,
-				FColor::Yellow, false, 1.0f, 0, 5);
+				FColor::Yellow, false, 0.2f, 0, 5);
 		}
 
 	}

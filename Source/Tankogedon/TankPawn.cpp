@@ -101,7 +101,7 @@ void ATankPawn::BeginPlay()
 	Super::BeginPlay();
 	TankController = Cast<ATankPlayerController>(GetController());
 
-	SetupCannon(CannonClass);
+	SetupCannon(EquippedCannonClass);
 }
 
 void ATankPawn::MoveForward(float DeltaTime)

@@ -47,7 +47,10 @@ protected:
 	ACannon* Cannon;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
-	TSubclassOf<ACannon> CannonClass;
+	TSubclassOf<ACannon> EquippedCannonClass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
+	TSubclassOf<ACannon> SecondCannonClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
 	class UArrowComponent* CannonSetupPoint;

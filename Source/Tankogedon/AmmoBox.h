@@ -20,7 +20,7 @@ protected:
 	class UStaticMeshComponent* AmmoMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Companents")
-	TSubclassOf<class ACannon> CannonClass;
+	TSubclassOf<class ACannon> SecondCannonClass;
 
 	UFUNCTION()
 	void OnMeshOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor*
