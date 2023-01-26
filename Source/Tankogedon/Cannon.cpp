@@ -8,7 +8,6 @@
 #include "Components/SceneComponent.h"
 #include "DrawDebugHelpers.h"
 #include "Logging/LogMacros.h"
-#include <winuser.h>
 
 ACannon::ACannon()
 {
