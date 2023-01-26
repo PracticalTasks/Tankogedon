@@ -16,13 +16,13 @@ AProjectile::AProjectile()
 
 	ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMesh"));
 	ProjectileMesh->SetupAttachment(RootComponent);
-	//ProjectileMesh->OnComponentBeginOverlap.AddDynamic(this, &AProjectile::OnMeshOverlapBegin);
-	//ProjectileMesh->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel1);
+	ProjectileMesh->OnComponentBeginOverlap.AddDynamic(this, &AProjectile::OnMeshOverlapBegin);
+	ProjectileMesh->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel1);
 
-	SphereCollision = CreateDefaultSubobject<USphereComponent>(TEXT("BoxCollision"));
-	SphereCollision->SetupAttachment(ProjectileMesh);
-	SphereCollision->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel1);
-	SphereCollision->OnComponentBeginOverlap.AddDynamic(this, &AProjectile::OnMeshOverlapBegin);
+	//SphereCollision = CreateDefaultSubobject<USphereComponent>(TEXT("BoxCollision"));
+	//SphereCollision->SetupAttachment(ProjectileMesh);
+	//SphereCollision->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel1);
+	//SphereCollision->OnComponentBeginOverlap.AddDynamic(this, &AProjectile::OnMeshOverlapBegin);
 }
 
 void AProjectile::Start()
