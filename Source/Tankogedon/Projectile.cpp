@@ -11,14 +11,18 @@ AProjectile::AProjectile()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 
-	USceneComponent* sceeneCmp = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
-	RootComponent = sceeneCmp;
+	USceneComponent* SceneComp = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
+	RootComponent = SceneComp;
 
 	ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMesh"));
 	ProjectileMesh->SetupAttachment(RootComponent);
-	ProjectileMesh->OnComponentBeginOverlap.AddDynamic(this, &AProjectile::OnMeshOverlapBegin);
-	ProjectileMesh->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel1);
+	//ProjectileMesh->OnComponentBeginOverlap.AddDynamic(this, &AProjectile::OnMeshOverlapBegin);
+	//ProjectileMesh->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel1);
 
+	SphereCollision = CreateDefaultSubobject<USphereComponent>(TEXT("BoxCollision"));
+	SphereCollision->SetupAttachment(ProjectileMesh);
+	SphereCollision->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel1);
+	SphereCollision->OnComponentBeginOverlap.AddDynamic(this, &AProjectile::OnMeshOverlapBegin);
 }
 
 void AProjectile::Start()
