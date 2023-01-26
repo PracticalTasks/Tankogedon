@@ -35,6 +35,7 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
 	float Damage = 1.0f;
 
+
 	FTimerHandle MovementTimer;
 
 	UFUNCTION()
