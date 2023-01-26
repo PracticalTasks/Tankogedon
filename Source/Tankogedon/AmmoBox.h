@@ -19,8 +19,10 @@ protected:
 	class UStaticMeshComponent* AmmoMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Companents")
-	TSubclassOf<class ACannon> SecondCannonClass;
+	//TSubclassOf<class ACannon> SecondCannonClass;
+	int CountShells = 10;
 
+protected:
 	UFUNCTION()
 	void OnMeshOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor*
 		OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool

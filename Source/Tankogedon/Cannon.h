@@ -19,6 +19,7 @@ public:
 
 	void Fire();
 	void FireSpecial();
+	void AddAmmo(int CountShells);
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
@@ -35,6 +36,8 @@ private:
 
 protected:
 	virtual void BeginPlay() override;
+	UFUNCTION(BlueprintCallable, Category = "Fire param")
+	int32 GetShells() { return shells; };
 
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
@@ -56,5 +59,5 @@ protected:
 	float Damage = 1.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
-	float shells = 50.0f;
+	int32 shells = 50;
 };

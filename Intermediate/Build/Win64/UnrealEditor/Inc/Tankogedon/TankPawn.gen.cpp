@@ -105,10 +105,11 @@ void EmptyLinkFunctionForGeneratedCodeTankPawn() {}
 #endif
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ATankPawn_Statics::NewProp_Cannon_MetaData[] = {
+		{ "Category", "Cannon" },
 		{ "ModuleRelativePath", "TankPawn.h" },
 	};
 #endif
-	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ATankPawn_Statics::NewProp_Cannon = { "Cannon", nullptr, (EPropertyFlags)0x0010000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ATankPawn, Cannon), Z_Construct_UClass_ACannon_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ATankPawn_Statics::NewProp_Cannon_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ATankPawn_Statics::NewProp_Cannon_MetaData)) };
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ATankPawn_Statics::NewProp_Cannon = { "Cannon", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ATankPawn, Cannon), Z_Construct_UClass_ACannon_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ATankPawn_Statics::NewProp_Cannon_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ATankPawn_Statics::NewProp_Cannon_MetaData)) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ATankPawn_Statics::NewProp_EquippedCannonClass_MetaData[] = {
 		{ "Category", "Cannon" },
@@ -249,9 +250,9 @@ void EmptyLinkFunctionForGeneratedCodeTankPawn() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Tankogedon_Source_Tankogedon_TankPawn_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ATankPawn, ATankPawn::StaticClass, TEXT("ATankPawn"), &Z_Registration_Info_UClass_ATankPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ATankPawn), 2478662782U) },
+		{ Z_Construct_UClass_ATankPawn, ATankPawn::StaticClass, TEXT("ATankPawn"), &Z_Registration_Info_UClass_ATankPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ATankPawn), 991397071U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Tankogedon_Source_Tankogedon_TankPawn_h_4015419739(TEXT("/Script/Tankogedon"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Tankogedon_Source_Tankogedon_TankPawn_h_2497601565(TEXT("/Script/Tankogedon"),
 		Z_CompiledInDeferFile_FID_Tankogedon_Source_Tankogedon_TankPawn_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Tankogedon_Source_Tankogedon_TankPawn_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

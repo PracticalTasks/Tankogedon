@@ -8,7 +8,7 @@
 #include "Components/SceneComponent.h"
 #include "DrawDebugHelpers.h"
 #include "Logging/LogMacros.h"
-#include <winuser.h>
+//#include <winuser.h>
 
 ACannon::ACannon()
 {
@@ -37,6 +37,11 @@ void ACannon::AuxiliaryFireFunct()
 	}
 }
 
+void ACannon::AddAmmo(int CountShells)
+{
+	shells += CountShells;
+}
+
 void ACannon::Fire()
 {
 	if (!IsReadyToFire() || shells < 1)
@@ -47,12 +52,14 @@ void ACannon::Fire()
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Purple, "Fire projectile");
 		AuxiliaryFireFunct();
+		UE_LOG(LogTemp, Display, TEXT("Ammo Fire projectile: %i"), shells);
 
 	}
 	else if(CannonType == ECannonType::FireAltProjecttile)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Yellow, "Fire alter projectile");
 		AuxiliaryFireFunct();
+		UE_LOG(LogTemp, Display, TEXT("Ammo Fire alter projectile: %i"), shells);
 	}
 	else
 	{

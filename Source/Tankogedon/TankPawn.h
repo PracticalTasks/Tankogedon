@@ -26,7 +26,7 @@ public:
 	void SetupCannon(TSubclassOf<ACannon> newCannonClass);
 
 public:
-	UPROPERTY();
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
 	ACannon* Cannon;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
