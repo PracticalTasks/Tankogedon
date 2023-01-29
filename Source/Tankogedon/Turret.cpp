@@ -65,6 +65,7 @@ void ATurret::SetupCannon(TSubclassOf<ACannon> newCannonClass)
 	Cannon = GetWorld()->SpawnActor<ACannon>(CannonClass, params);
 	Cannon->AttachToComponent(CannonSetupPoint,
 		FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+
 }
 
 void ATurret::Destroyed()
