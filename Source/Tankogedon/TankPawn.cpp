@@ -7,6 +7,9 @@
 #include "Kismet/KismetMathLibrary.h"
 #include "Cannon.h"
 #include "Components/ArrowComponent.h"
+//#include "Logging/LogMacros.h"
+#include "HealthComponent.h"
+//#include <Engine/EngineTypes.h>
 
 ATankPawn::ATankPawn()
 {
@@ -33,6 +36,11 @@ ATankPawn::ATankPawn()
 
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(SpringArm);
+
+	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
+	HealthComponent->OnHealthChanged.AddUObject(this, &ATankPawn::DamageTaked);
+	HealthComponent->OnDie.AddUObject(this, &ATankPawn::Die);
+
 }
 
 void ATankPawn::Tick(float DeltaTime)
@@ -94,6 +102,26 @@ void ATankPawn::SetupCannon(TSubclassOf<ACannon> newCannonClass)
 	Cannon = GetWorld()->SpawnActor<ACannon>(newCannonClass, spawnParams);
 	Cannon->AttachToComponent(CannonSetupPoint, FAttachmentTransformRules::
 		SnapToTargetNotIncludingScale);
+}
+
+void ATankPawn::TakeDamage(FDamageData DamageData)
+{
+	HealthComponent->TakeDamage(DamageData);
+}
+
+void ATankPawn::DamageTaked(float Value)
+{
+	UE_LOG(LogTemp, Warning, TEXT("Health: %f"), HealthComponent->GetHealth());
+}
+
+void ATankPawn::Die()
+{
+	if (Cannon)
+	{
+		Cannon->Destroy();
+	}
+
+	Destroy();
 }
 
 void ATankPawn::BeginPlay()

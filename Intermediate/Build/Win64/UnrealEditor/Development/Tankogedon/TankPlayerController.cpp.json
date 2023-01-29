@@ -21,6 +21,10 @@
             "d:\\source\\repos\\unrealengine\\tankogedon\\intermediate\\build\\win64\\unrealeditor\\inc\\tankogedon\\cannon.generated.h",
             "d:\\source\\repos\\unrealengine\\tankogedon\\intermediate\\build\\win64\\unrealeditor\\inc\\tankogedon\\tankplayercontroller.generated.h",
             "d:\\source\\repos\\unrealengine\\tankogedon\\source\\tankogedon\\tankpawn.h",
+            "d:\\source\\repos\\unrealengine\\tankogedon\\source\\tankogedon\\damagetaker.h",
+            "d:\\source\\repos\\unrealengine\\tankogedon\\intermediate\\build\\win64\\unrealeditor\\inc\\tankogedon\\damagetaker.generated.h",
+            "d:\\source\\repos\\unrealengine\\tankogedon\\source\\tankogedon\\healthcomponent.h",
+            "d:\\source\\repos\\unrealengine\\tankogedon\\intermediate\\build\\win64\\unrealeditor\\inc\\tankogedon\\healthcomponent.generated.h",
             "d:\\source\\repos\\unrealengine\\tankogedon\\intermediate\\build\\win64\\unrealeditor\\inc\\tankogedon\\tankpawn.generated.h"
         ],
         "ImportedModules": [],

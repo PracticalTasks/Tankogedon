@@ -20,13 +20,13 @@ public:
 	void Fire();
 	void FireSpecial();
 	void AddAmmo(int CountShells);
+	bool IsReadyToFire();
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
 	ECannonType CannonType = ECannonType::FireProjecttile;
 
 private:
-	bool IsReadyToFire();
 	void Reload();
 	void AuxiliaryFireFunct();
 

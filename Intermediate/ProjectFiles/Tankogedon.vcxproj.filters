@@ -49,10 +49,22 @@
     <ClInclude Include="..\..\Source\Tankogedon\Cannon.h">
       <Filter>Source\Tankogedon</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\Tankogedon\DamageTaker.cpp">
+      <Filter>Source\Tankogedon</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Tankogedon\DamageTaker.h">
+      <Filter>Source\Tankogedon</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\Tankogedon\GameStruct.cpp">
       <Filter>Source\Tankogedon</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\Tankogedon\GameStruct.h">
+      <Filter>Source\Tankogedon</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Tankogedon\HealthComponent.cpp">
+      <Filter>Source\Tankogedon</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Tankogedon\HealthComponent.h">
       <Filter>Source\Tankogedon</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\Tankogedon\Projectile.cpp">
@@ -86,6 +98,12 @@
       <Filter>Source\Tankogedon</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\Tankogedon\TankPlayerController.h">
+      <Filter>Source\Tankogedon</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Tankogedon\Turret.cpp">
+      <Filter>Source\Tankogedon</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Tankogedon\Turret.h">
       <Filter>Source\Tankogedon</Filter>
     </ClInclude>
   </ItemGroup>
