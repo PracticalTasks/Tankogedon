@@ -123,6 +123,7 @@ bool ACannon::IsReadyToFire()
 void ACannon::Reload()
 {
 	bReadyToFire = true;
+
 }
 
 // Called when the game starts or when spawned
