@@ -60,4 +60,8 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
 	int32 shells = 50;
+
+	void OnMeshOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor*
+		OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool
+		bFromSweep, const FHitResult& SweepResult);
 };

@@ -8,6 +8,7 @@
 #include "Components/SceneComponent.h"
 #include "DrawDebugHelpers.h"
 #include "Logging/LogMacros.h"
+#include "DamageTaker.h"
 
 ACannon::ACannon()
 {
@@ -131,7 +132,36 @@ void ACannon::BeginPlay()
 	Super::BeginPlay();
 
 	bReadyToFire = true;
-	
 }
 
+void ACannon::OnMeshOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	AActor* owner = GetOwner();
+	AActor* OwnerByOwner = Owner != nullptr ? GetOwner() : nullptr;
+
+	if (OtherActor != Owner || OtherActor != OwnerByOwner)
+	{
+		IDamageTaker* DamageActor = Cast<IDamageTaker>(OtherActor);
+
+		if (DamageActor)
+		{
+			FDamageData damageData;
+			damageData.DamageValue = Damage;
+			damageData.Instigator = Owner;
+			damageData.DamageMaker = this;
+
+			DamageActor->TakeDamage(damageData);
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Overlapped actor: %s"),
+				*OtherActor->GetName());
+			OtherActor->Destroy();
+		}
+
+		//Destroy();
+	}
+
+
+}
 
