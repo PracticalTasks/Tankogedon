@@ -49,11 +49,11 @@ protected:
 	virtual void BeginPlay() override;
 
 protected:
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
-	//UStaticMeshComponent* BodyMesh;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
+	UStaticMeshComponent* BodyMesh;
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
-	//UStaticMeshComponent* TurretMesh;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
+	UStaticMeshComponent* TurretMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
 	class UBoxComponent* BoxCollision;
@@ -64,11 +64,11 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
 	class UCameraComponent* Camera;
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
-	//class UHealthComponent* HealthComponent;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
+	class UHealthComponent* HealthComponent;
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
-	//class UArrowComponent* CannonSetupPoint;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
+	class UArrowComponent* CannonSetupPoint;
 
 	UPROPERTY();
 	class ATankPlayerController* TankController;

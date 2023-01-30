@@ -19,18 +19,21 @@ public:
 	virtual void Die() = 0;
 	virtual void SetupCannon(TSubclassOf<ACannon> newCannonClass) = 0;
 	void Fire();
-	ShootingMachines* getPtr() { return this; };
+	void SetHealthComponent(UHealthComponent* _HealthComponent) { HealthComponent = _HealthComponent; };
+	
+	//ShootingMachines* getPtr() { return this; };
 
 public:
 	UPROPERTY()
 	ACannon* Cannon;
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Components")
-	UStaticMeshComponent* BodyMesh;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
-	UStaticMeshComponent* TurretMesh;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
-	class UHealthComponent* HealthComponent;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
-	class UArrowComponent* CannonSetupPoint;
+	UHealthComponent* HealthComponent;
+	//UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Components")
+	//UStaticMeshComponent* BodyMesh;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
+	//UStaticMeshComponent* TurretMesh;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
+	//class UHealthComponent* HealthComponent;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
+	//class UArrowComponent* CannonSetupPoint;
 
 };

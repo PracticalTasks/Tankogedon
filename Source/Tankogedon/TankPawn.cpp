@@ -38,8 +38,10 @@ ATankPawn::ATankPawn()
 	Camera->SetupAttachment(SpringArm);
 
 	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
-	HealthComponent->OnHealthChanged.AddUObject(getPtr(), &ShootingMachines::TakeDamage);
+	SetHealthComponent(HealthComponent);
+	HealthComponent->OnHealthChanged.AddUObject(this, &ShootingMachines::DamageTake);
 	HealthComponent->OnDie.AddUObject(this, &ATankPawn::Die);
+
 
 }
 
@@ -90,10 +92,10 @@ void ATankPawn::SetupCannon(TSubclassOf<ACannon> newCannonClass)
 		return;
 	}
 	
-	//if (Cannon)
-	//{
-	//	Cannon->Destroy();
-	//}
+	if (Cannon)
+	{
+		Cannon->Destroy();
+	}
 
 	FActorSpawnParameters spawnParams;
 	spawnParams.Instigator = this;
