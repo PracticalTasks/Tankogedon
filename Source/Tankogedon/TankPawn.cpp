@@ -50,6 +50,7 @@ void ATankPawn::Tick(float DeltaTime)
 	MoveRight(DeltaTime);
 	MoveRotationRight(DeltaTime);
 	TurretRotation(DeltaTime);
+
 }
 
 void ATankPawn::GetForwardValue(float Value)
