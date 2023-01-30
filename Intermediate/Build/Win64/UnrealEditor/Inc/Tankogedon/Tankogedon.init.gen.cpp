@@ -17,7 +17,7 @@ void EmptyLinkFunctionForGeneratedCodeTankogedon_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0x786D5827,
+				0xB8DA9444,
 				0x0BB096BD,
 				METADATA_PARAMS(nullptr, 0)
 			};
@@ -25,5 +25,5 @@ void EmptyLinkFunctionForGeneratedCodeTankogedon_init() {}
 		}
 		return Z_Registration_Info_UPackage__Script_Tankogedon.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_Tankogedon(Z_Construct_UPackage__Script_Tankogedon, TEXT("/Script/Tankogedon"), Z_Registration_Info_UPackage__Script_Tankogedon, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x786D5827, 0x0BB096BD));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_Tankogedon(Z_Construct_UPackage__Script_Tankogedon, TEXT("/Script/Tankogedon"), Z_Registration_Info_UPackage__Script_Tankogedon, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xB8DA9444, 0x0BB096BD));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

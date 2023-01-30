@@ -19,6 +19,11 @@
             "d:\\source\\repos\\unrealengine\\tankogedon\\intermediate\\build\\win64\\unrealeditor\\inc\\tankogedon\\damagetaker.generated.h",
             "d:\\source\\repos\\unrealengine\\tankogedon\\source\\tankogedon\\healthcomponent.h",
             "d:\\source\\repos\\unrealengine\\tankogedon\\intermediate\\build\\win64\\unrealeditor\\inc\\tankogedon\\healthcomponent.generated.h",
+            "d:\\source\\repos\\unrealengine\\tankogedon\\source\\tankogedon\\shootingmachines.h",
+            "d:\\source\\repos\\unrealengine\\tankogedon\\source\\tankogedon\\cannon.h",
+            "d:\\epicgames\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\components\\arrowcomponent.h",
+            "d:\\epicgames\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\arrowcomponent.generated.h",
+            "d:\\source\\repos\\unrealengine\\tankogedon\\intermediate\\build\\win64\\unrealeditor\\inc\\tankogedon\\cannon.generated.h",
             "d:\\source\\repos\\unrealengine\\tankogedon\\intermediate\\build\\win64\\unrealeditor\\inc\\tankogedon\\tankpawn.generated.h"
         ],
         "ImportedModules": [],
