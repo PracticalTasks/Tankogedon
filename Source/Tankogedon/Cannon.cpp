@@ -9,6 +9,7 @@
 #include "DrawDebugHelpers.h"
 #include "Logging/LogMacros.h"
 #include "DamageTaker.h"
+#include "GameStruct.h"
 
 ACannon::ACannon()
 {
@@ -34,6 +35,46 @@ void ACannon::AuxiliaryFireFunct()
 	if (Projectile)
 	{
 		Projectile->Start();
+	}
+}
+
+void ACannon::FireTrace()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, "Fire trace");
+	--shells;
+	FHitResult hitResult;
+	FCollisionQueryParams traceParams = FCollisionQueryParams();
+	traceParams.AddIgnoredActor(this);
+	traceParams.bReturnPhysicalMaterial = false;
+	FVector Start = ProjectileSpawnPoint->GetComponentLocation();
+	FVector End = Start + ProjectileSpawnPoint->GetForwardVector() * FireRange;
+
+	if (GetWorld()->LineTraceSingleByChannel(hitResult, Start, End,
+		ECollisionChannel::ECC_Visibility, traceParams))
+	{
+		if (hitResult.GetActor())
+		{
+			DrawDebugLine(GetWorld(), Start, hitResult.Location,
+				FColor::Red, false, 0.2f, 0, 5);
+			IDamageTaker* damageActor = Cast<IDamageTaker>(hitResult.GetActor());
+			if (damageActor)
+			{
+				FDamageData damageData;
+				damageData.DamageMaker = this;
+				damageData.DamageValue = Damage;
+				damageData.Instigator = GetOwner();
+
+				damageActor->TakeDamage(damageData);
+			}
+			//UE_LOG(LogTemp, Warning, TEXT("Overlapped actor: %s"),
+			//	*OverlappedActor->GetName());
+			//OverlappedActor->Destroy();
+		}
+	}
+	else
+	{
+		DrawDebugLine(GetWorld(), Start, End,
+			FColor::Yellow, false, 0.2f, 0, 5);
 	}
 }
 
@@ -63,34 +104,7 @@ void ACannon::Fire()
 	}
 	else
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, "Fire trace");
-		--shells;
-		FHitResult hitResult;
-		FCollisionQueryParams traceParams = FCollisionQueryParams();
-		traceParams.AddIgnoredActor(this);
-		traceParams.bReturnPhysicalMaterial = false;
-		FVector Start = ProjectileSpawnPoint->GetComponentLocation();
-		FVector End = Start + ProjectileSpawnPoint->GetForwardVector() * FireRange;
-		
-		if (GetWorld()->LineTraceSingleByChannel(hitResult, Start, End, 
-			ECollisionChannel::ECC_Visibility, traceParams))
-		{
-			DrawDebugLine(GetWorld(), Start, hitResult.Location,
-				FColor::Red, false, 0.2f, 0, 5);
-			if (hitResult.GetActor())
-			{
-				AActor* OverlappedActor = hitResult.GetActor();
-				UE_LOG(LogTemp, Warning, TEXT("Overlapped actor: %s"),
-					*OverlappedActor->GetName());
-				OverlappedActor->Destroy();
-			}
-		}
-		else
-		{
-			DrawDebugLine(GetWorld(), Start, End,
-				FColor::Yellow, false, 0.2f, 0, 5);
-		}
-
+		FireTrace();
 	}
 
 	bReadyToFire = false;

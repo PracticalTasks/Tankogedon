@@ -29,6 +29,7 @@ public:
 private:
 	void Reload();
 	void AuxiliaryFireFunct();
+	void FireTrace();
 
 private:
 	bool bReadyToFire = true;
