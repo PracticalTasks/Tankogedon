@@ -20,14 +20,6 @@ class TANKOGEDON_API ATurret : public AShootingMachines
 	
 public:	
 	ATurret();
-	//UFUNCTION()
-	//virtual void TakeDamage(FDamageData DamageData) override;
-
-	//UFUNCTION()
-	//void Die();
-
-	//UFUNCTION()
-	//void DamageTake(float Value);
 	
 protected:
 	virtual void BeginPlay() override;
@@ -36,24 +28,8 @@ protected:
 	void RotateToPlayer();
 	bool IsPlayerInRange();
 	bool CanFire();
-	/*void Fire();
-	void SetupCannon(TSubclassOf<ACannon> newCannonClass);*/
 
 protected:
-	/*UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Components")
-	UStaticMeshComponent* BodyMesh;
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Components")
-	UStaticMeshComponent* TurretMesh;
-	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Components")
-	class UArrowComponent* CannonSetupPoint;*/
-	//UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Components")
-	//class UBoxComponent* BoxCollision;
-	//UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Components")
-	//class UHealthComponent* HealthComponent;
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Ammo")
-	//TSubclassOf<ACannon> EquippedCannonClass;
-	//UPROPERTY()
-	//ACannon* Cannon;
 	UPROPERTY()
 	class APawn* PlayerPawn;
 

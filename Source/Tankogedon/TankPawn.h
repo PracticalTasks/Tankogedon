@@ -24,51 +24,15 @@ public:
 	void GetRightValue(float Value);
 	void GetRotationRightValue(float Value);
 
-	//void Fire();
-	//void FireSpecial();
-	//void SetupCannon(TSubclassOf<ACannon> newCannonClass) override;
-	//void TakeDamage(FDamageData DamageData) override;
-
-	//UFUNCTION()
-	//void DamageTaked(float value);
-
-	//UFUNCTION()
-	//void Die();
-
-//public:
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
-	//ACannon* Cannon;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
-	//TSubclassOf<ACannon> EquippedCannonClass;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
-	//TSubclassOf<ACannon> SecondCannonClass;
-
 protected:
 	virtual void BeginPlay() override;
 
 protected:
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
-	//UStaticMeshComponent* BodyMesh;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
-	//UStaticMeshComponent* TurretMesh;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
-	//class UBoxComponent* BoxCollision;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
 	class USpringArmComponent* SpringArm;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
 	class UCameraComponent* Camera;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
-	//class UHealthComponent* HealthComponent;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
-	//class UArrowComponent* CannonSetupPoint;
 
 	UPROPERTY();
 	class ATankPlayerController* TankController;
