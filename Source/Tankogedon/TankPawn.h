@@ -1,7 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Pawn.h"
+//#include "GameFramework/Pawn.h"
 #include "DamageTaker.h"
 #include "HealthComponent.h"
 #include "ShootingMachines.h"
@@ -12,7 +12,7 @@ class ACannon;
 
 UCLASS()
 
-class TANKOGEDON_API ATankPawn : public APawn, public ShootingMachines
+class TANKOGEDON_API ATankPawn : public AShootingMachines
 {
 	GENERATED_BODY()
 
@@ -25,38 +25,38 @@ public:
 	void GetRotationRightValue(float Value);
 
 	//void Fire();
-	void FireSpecial();
-	void SetupCannon(TSubclassOf<ACannon> newCannonClass) override;
+	//void FireSpecial();
+	//void SetupCannon(TSubclassOf<ACannon> newCannonClass) override;
 	//void TakeDamage(FDamageData DamageData) override;
 
 	//UFUNCTION()
 	//void DamageTaked(float value);
 
-	UFUNCTION()
-	void Die() override;
+	//UFUNCTION()
+	//void Die();
 
-public:
+//public:
 	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
 	//ACannon* Cannon;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
-	TSubclassOf<ACannon> EquippedCannonClass;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
+	//TSubclassOf<ACannon> EquippedCannonClass;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
-	TSubclassOf<ACannon> SecondCannonClass;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
+	//TSubclassOf<ACannon> SecondCannonClass;
 
 protected:
 	virtual void BeginPlay() override;
 
 protected:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
-	UStaticMeshComponent* BodyMesh;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
+	//UStaticMeshComponent* BodyMesh;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
-	UStaticMeshComponent* TurretMesh;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
+	//UStaticMeshComponent* TurretMesh;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
-	class UBoxComponent* BoxCollision;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
+	//class UBoxComponent* BoxCollision;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
 	class USpringArmComponent* SpringArm;
@@ -64,11 +64,11 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
 	class UCameraComponent* Camera;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
-	class UHealthComponent* HealthComponent;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
+	//class UHealthComponent* HealthComponent;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
-	class UArrowComponent* CannonSetupPoint;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
+	//class UArrowComponent* CannonSetupPoint;
 
 	UPROPERTY();
 	class ATankPlayerController* TankController;

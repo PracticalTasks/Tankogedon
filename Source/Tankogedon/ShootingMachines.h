@@ -1,39 +1,56 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameFramework/Pawn.h"
 #include "DamageTaker.h"
 #include "HealthComponent.h"
-#include "GameStruct.h"
+#include "Components/StaticMeshComponent.h"
+#include "Components/BoxComponent.h"
 #include "Cannon.h"
+#include "ShootingMachines.generated.h"
 
-class TANKOGEDON_API ShootingMachines : public IDamageTaker
+
+class UStaticMeshComponent;
+class ACannon;
+UCLASS()
+class TANKOGEDON_API AShootingMachines : public APawn, public IDamageTaker
 {
+	GENERATED_BODY()
+
+protected:
+	virtual void BeginPlay() override;
+
+
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Components")
+	UStaticMeshComponent* BodyMesh;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
+	UStaticMeshComponent* TurretMesh;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
+	class UBoxComponent* BoxCollision;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
+	class UHealthComponent* HealthComponent;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
+	class UArrowComponent* CannonSetupPoint;
 public:
-	//ShootingMachines();
+	UPROPERTY()
+	ACannon* Cannon;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
+	TSubclassOf<ACannon> EquippedCannonClass;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
+	TSubclassOf<ACannon> SecondCannonClass;
+
+public:
+	AShootingMachines();
 
 	UFUNCTION()
 	void TakeDamage(FDamageData DamageData) override;
 	UFUNCTION()
 	void DamageTake(float Value);
+	ACannon* GetCannon() const;
+	//void SetupCannon(TSubclassOf<ACannon> newCannonClass) override;
 
-	virtual void Die() = 0;
-	virtual void SetupCannon(TSubclassOf<ACannon> newCannonClass) = 0;
+	virtual void Die();
+	virtual void SetupCannon(TSubclassOf<ACannon> newCannonClass);
 	void Fire();
-	void SetHealthComponent(UHealthComponent* _HealthComponent) { HealthComponent = _HealthComponent; };
-	
-	//ShootingMachines* getPtr() { return this; };
-
-public:
-	UPROPERTY()
-	ACannon* Cannon;
-	UHealthComponent* HealthComponent;
-	//UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Components")
-	//UStaticMeshComponent* BodyMesh;
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
-	//UStaticMeshComponent* TurretMesh;
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
-	//class UHealthComponent* HealthComponent;
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
-	//class UArrowComponent* CannonSetupPoint;
-
+	void FireSpecial();
 };

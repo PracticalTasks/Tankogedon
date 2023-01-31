@@ -13,19 +13,19 @@
 
 ATankPawn::ATankPawn()
 {
-	PrimaryActorTick.bCanEverTick = true;
-	BoxCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("RootComponent"));
-	RootComponent = BoxCollision;
+	//PrimaryActorTick.bCanEverTick = true;
+	//BoxCollision = CreateDefaultSubobject<UBoxComponent>(TEXT("RootComponent"));
+	//RootComponent = BoxCollision;
 
-	BodyMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyMesh"));
-	BodyMesh->SetupAttachment(BoxCollision);
+	//BodyMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BodyMesh"));
+	//BodyMesh->SetupAttachment(BoxCollision);
 
-	TurretMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TurretMesh"));
-	TurretMesh->SetupAttachment(BodyMesh);
+	//TurretMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("TurretMesh"));
+	//TurretMesh->SetupAttachment(BodyMesh);
 
-	CannonSetupPoint = CreateDefaultSubobject<UArrowComponent>
+	/*CannonSetupPoint = CreateDefaultSubobject<UArrowComponent>
 		(TEXT("CannonSetupPoint"));
-	CannonSetupPoint->AttachToComponent(TurretMesh, FAttachmentTransformRules::KeepRelativeTransform);
+	CannonSetupPoint->AttachToComponent(TurretMesh, FAttachmentTransformRules::KeepRelativeTransform);*/
 
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArm->SetupAttachment(BoxCollision);
@@ -37,10 +37,9 @@ ATankPawn::ATankPawn()
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(SpringArm);
 
-	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
-	SetHealthComponent(HealthComponent);
-	HealthComponent->OnHealthChanged.AddUObject(this, &ShootingMachines::DamageTake);
-	HealthComponent->OnDie.AddUObject(this, &ATankPawn::Die);
+	//HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("HealthComponent"));
+	//HealthComponent->OnHealthChanged.AddUObject(this, &ShootingMachines::DamageTake);
+	//HealthComponent->OnDie.AddUObject(this, &ATankPawn::Die);
 
 
 }
@@ -77,34 +76,34 @@ void ATankPawn::GetRotationRightValue(float Value)
 //	}
 //}
 
-void ATankPawn::FireSpecial()
-{
-	if (Cannon)
-	{
-		Cannon->FireSpecial();
-	}
-}
+//void ATankPawn::FireSpecial()
+//{
+//	if (Cannon)
+//	{
+//		Cannon->FireSpecial();
+//	}
+//}
 
-void ATankPawn::SetupCannon(TSubclassOf<ACannon> newCannonClass)
-{
-	if (!newCannonClass)
-	{
-		return;
-	}
-	
-	if (Cannon)
-	{
-		Cannon->Destroy();
-	}
-
-	FActorSpawnParameters spawnParams;
-	spawnParams.Instigator = this;
-	spawnParams.Owner = this;
-
-	Cannon = GetWorld()->SpawnActor<ACannon>(newCannonClass, spawnParams);
-	Cannon->AttachToComponent(CannonSetupPoint, FAttachmentTransformRules::
-		SnapToTargetNotIncludingScale);
-}
+//void ATankPawn::SetupCannon(TSubclassOf<ACannon> newCannonClass)
+//{
+//	if (!newCannonClass)
+//	{
+//		return;
+//	}
+//	
+//	if (Cannon)
+//	{
+//		Cannon->Destroy();
+//	}
+//
+//	FActorSpawnParameters spawnParams;
+//	spawnParams.Instigator = this;
+//	spawnParams.Owner = this;
+//
+//	Cannon = GetWorld()->SpawnActor<ACannon>(newCannonClass, spawnParams);
+//	Cannon->AttachToComponent(CannonSetupPoint, FAttachmentTransformRules::
+//		SnapToTargetNotIncludingScale);
+//}
 
 //void ATankPawn::TakeDamage(FDamageData DamageData)
 //{
@@ -116,22 +115,22 @@ void ATankPawn::SetupCannon(TSubclassOf<ACannon> newCannonClass)
 //	UE_LOG(LogTemp, Warning, TEXT("Health: %f"), HealthComponent->GetHealth());
 //}
 
-void ATankPawn::Die()
-{
-	if (Cannon)
-	{
-		Cannon->Destroy();
-	}
-
-	Destroy();
-}
+//void ATankPawn::Die()
+//{
+//	if (Cannon)
+//	{
+//		Cannon->Destroy();
+//	}
+//
+//	Destroy();
+//}
 
 void ATankPawn::BeginPlay()
 {
 	Super::BeginPlay();
 	TankController = Cast<ATankPlayerController>(GetController());
 
-	SetupCannon(EquippedCannonClass);
+	//SetupCannon(EquippedCannonClass);
 }
 
 void ATankPawn::MoveForward(float DeltaTime)

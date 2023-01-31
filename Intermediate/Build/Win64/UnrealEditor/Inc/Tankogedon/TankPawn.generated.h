@@ -14,22 +14,14 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define TANKOGEDON_TankPawn_generated_h
 
 #define FID_Tankogedon_Source_Tankogedon_TankPawn_h_17_SPARSE_DATA
-#define FID_Tankogedon_Source_Tankogedon_TankPawn_h_17_RPC_WRAPPERS \
- \
-	DECLARE_FUNCTION(execDie);
-
-
-#define FID_Tankogedon_Source_Tankogedon_TankPawn_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
- \
-	DECLARE_FUNCTION(execDie);
-
-
+#define FID_Tankogedon_Source_Tankogedon_TankPawn_h_17_RPC_WRAPPERS
+#define FID_Tankogedon_Source_Tankogedon_TankPawn_h_17_RPC_WRAPPERS_NO_PURE_DECLS
 #define FID_Tankogedon_Source_Tankogedon_TankPawn_h_17_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesATankPawn(); \
 	friend struct Z_Construct_UClass_ATankPawn_Statics; \
 public: \
-	DECLARE_CLASS(ATankPawn, APawn, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/Tankogedon"), NO_API) \
+	DECLARE_CLASS(ATankPawn, AShootingMachines, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/Tankogedon"), NO_API) \
 	DECLARE_SERIALIZER(ATankPawn)
 
 
@@ -38,7 +30,7 @@ private: \
 	static void StaticRegisterNativesATankPawn(); \
 	friend struct Z_Construct_UClass_ATankPawn_Statics; \
 public: \
-	DECLARE_CLASS(ATankPawn, APawn, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/Tankogedon"), NO_API) \
+	DECLARE_CLASS(ATankPawn, AShootingMachines, COMPILED_IN_FLAGS(0 | CLASS_Config), CASTCLASS_None, TEXT("/Script/Tankogedon"), NO_API) \
 	DECLARE_SERIALIZER(ATankPawn)
 
 

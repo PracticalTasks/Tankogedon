@@ -79,6 +79,12 @@
     <ClInclude Include="..\..\Source\Tankogedon\ShootingMachines.h">
       <Filter>Source\Tankogedon</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\Tankogedon\ShootingMachines1.cpp">
+      <Filter>Source\Tankogedon</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Tankogedon\ShootingMachines1.h">
+      <Filter>Source\Tankogedon</Filter>
+    </ClInclude>
     <None Include="..\..\Source\Tankogedon\Tankogedon.Build.cs">
       <Filter>Source\Tankogedon</Filter>
     </None>
