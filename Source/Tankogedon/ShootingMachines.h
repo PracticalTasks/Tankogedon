@@ -20,7 +20,6 @@ class TANKOGEDON_API AShootingMachines : public APawn, public IDamageTaker
 protected:
 	virtual void BeginPlay() override;
 
-
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Components")
 	UStaticMeshComponent* BodyMesh;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components");
@@ -47,7 +46,6 @@ public:
 	UFUNCTION()
 	void DamageTake(float Value);
 	ACannon* GetCannon() const;
-	//void SetupCannon(TSubclassOf<ACannon> newCannonClass) override;
 
 	virtual void Die();
 	virtual void SetupCannon(TSubclassOf<ACannon> newCannonClass);

@@ -3,8 +3,6 @@
 void AShootingMachines::BeginPlay()
 {
 	Super::BeginPlay();
-	//TankController = Cast<ATankPlayerController>(GetController());
-
 	SetupCannon(EquippedCannonClass);
 }
 
