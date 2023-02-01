@@ -24,6 +24,7 @@ public:
 	void Fire();
 	void FireSpecial();
 	void SetupCannon(TSubclassOf<ACannon> newCannonClass);
+	void changeWeapon();
 
 public:
 	UPROPERTY();

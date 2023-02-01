@@ -22,8 +22,8 @@ void ATankPlayerController::SetupInputComponent()
 	InputComponent->BindAction("FireSpecial", EInputEvent::IE_Pressed,
 		this, &ATankPlayerController::FireSpecial);
 
-	InputComponent->BindAction("SwapCannon", EInputEvent::IE_Pressed,
-		this, &ATankPlayerController::swapCannon);
+	InputComponent->BindAction("ChangeWeapon", EInputEvent::IE_Pressed,
+		this, &ATankPlayerController::changeWeapon);
 }
 
 void ATankPlayerController::Tick(float DeltaSeconds)
@@ -89,20 +89,24 @@ void ATankPlayerController::FireSpecial()
 	}
 }
 
-void ATankPlayerController::swapCannon()
+void ATankPlayerController::changeWeapon()
 {
-	if (!TankPawn->Cannon)
+	if (TankPawn)
 	{
-		return;
+		TankPawn->changeWeapon();
 	}
-	if (TankPawn->Cannon->CannonType == ECannonType::FireProjecttile)
-	{
-		TankPawn->SetupCannon(TankPawn->SecondCannonClass);
-		TankPawn->Cannon->CannonType = ECannonType::FireAltProjecttile;
-	}
-	else
-	{
-		TankPawn->SetupCannon(TankPawn->EquippedCannonClass);
-	}
-	
+	//if (!TankPawn->Cannon)
+	//{
+	//	return;
+	//}
+	//if (TankPawn->Cannon->CannonType == ECannonType::FireProjecttile)
+	//{
+	//	TankPawn->SetupCannon(TankPawn->SecondCannonClass);
+	//	TankPawn->Cannon->CannonType = ECannonType::FireAltProjecttile;
+	//}
+	//else
+	//{
+	//	TankPawn->SetupCannon(TankPawn->EquippedCannonClass);
+	//}
+	//
 }

@@ -24,7 +24,7 @@ ACannon::ACannon()
 	ProjectileSpawnPoint->SetupAttachment(CannonMesh);
 }
 
-void ACannon::AuxiliaryFireFunct()
+void ACannon::fireProjectile()
 {
 	--shells;
 	AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>
@@ -36,6 +36,36 @@ void ACannon::AuxiliaryFireFunct()
 	}
 }
 
+void ACannon::fireTrace()
+{
+	--shells;
+	FHitResult hitResult;
+	FCollisionQueryParams traceParams = FCollisionQueryParams();
+	traceParams.AddIgnoredActor(this);
+	traceParams.bReturnPhysicalMaterial = false;
+	FVector Start = ProjectileSpawnPoint->GetComponentLocation();
+	FVector End = Start + ProjectileSpawnPoint->GetForwardVector() * FireRange;
+
+	if (GetWorld()->LineTraceSingleByChannel(hitResult, Start, End,
+		ECollisionChannel::ECC_Visibility, traceParams))
+	{
+		DrawDebugLine(GetWorld(), Start, hitResult.Location,
+			FColor::Red, false, 0.2f, 0, 5);
+		if (hitResult.GetActor())
+		{
+			AActor* OverlappedActor = hitResult.GetActor();
+			UE_LOG(LogTemp, Warning, TEXT("Overlapped actor: %s"),
+				*OverlappedActor->GetName());
+			OverlappedActor->Destroy();
+		}
+	}
+	else
+	{
+		DrawDebugLine(GetWorld(), Start, End,
+			FColor::Yellow, false, 0.2f, 0, 5);
+	}
+}
+
 void ACannon::Fire()
 {
 	if (!IsReadyToFire() || shells < 1)
@@ -44,45 +74,11 @@ void ACannon::Fire()
 	}
 	if (CannonType == ECannonType::FireProjecttile)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Purple, "Fire projectile");
-		AuxiliaryFireFunct();
-
-	}
-	else if(CannonType == ECannonType::FireAltProjecttile)
-	{
-		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Yellow, "Fire alter projectile");
-		AuxiliaryFireFunct();
+		fireProjectile();
 	}
 	else
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, "Fire trace");
-		--shells;
-		FHitResult hitResult;
-		FCollisionQueryParams traceParams = FCollisionQueryParams();
-		traceParams.AddIgnoredActor(this);
-		traceParams.bReturnPhysicalMaterial = false;
-		FVector Start = ProjectileSpawnPoint->GetComponentLocation();
-		FVector End = Start + ProjectileSpawnPoint->GetForwardVector() * FireRange;
-		
-		if (GetWorld()->LineTraceSingleByChannel(hitResult, Start, End, 
-			ECollisionChannel::ECC_Visibility, traceParams))
-		{
-			DrawDebugLine(GetWorld(), Start, hitResult.Location,
-				FColor::Red, false, 0.2f, 0, 5);
-			if (hitResult.GetActor())
-			{
-				AActor* OverlappedActor = hitResult.GetActor();
-				UE_LOG(LogTemp, Warning, TEXT("Overlapped actor: %s"),
-					*OverlappedActor->GetName());
-				OverlappedActor->Destroy();
-			}
-		}
-		else
-		{
-			DrawDebugLine(GetWorld(), Start, End,
-				FColor::Yellow, false, 0.2f, 0, 5);
-		}
-
+		fireTrace();
 	}
 
 	bReadyToFire = false;
