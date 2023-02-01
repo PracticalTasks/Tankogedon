@@ -19,8 +19,8 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Companents")
 	class UStaticMeshComponent* AmmoMesh;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Companents")
-	TSubclassOf<class ACannon> SecondCannonClass;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Companents")
+	//TSubclassOf<class ACannon> SecondCannonClass;
 
 	UFUNCTION()
 	void OnMeshOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor*
