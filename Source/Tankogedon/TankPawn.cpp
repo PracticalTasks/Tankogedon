@@ -96,6 +96,11 @@ void ATankPawn::SetupCannon(TSubclassOf<ACannon> newCannonClass)
 		SnapToTargetNotIncludingScale);
 }
 
+void ATankPawn::ChangeWeapon()
+{
+
+}
+
 void ATankPawn::BeginPlay()
 {
 	Super::BeginPlay();

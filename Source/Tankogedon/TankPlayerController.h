@@ -27,8 +27,7 @@ protected:
 
 	void Fire();
 	void FireSpecial();
-	void swapCannon();
-	void ChangeAmmo();
+	void ChangWeapon();
 
 	FVector MousePos;
 };

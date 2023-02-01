@@ -25,6 +25,7 @@ public:
 	void Fire();
 	void FireSpecial();
 	void SetupCannon(TSubclassOf<ACannon> newCannonClass);
+	void ChangeWeapon();
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cannon");
