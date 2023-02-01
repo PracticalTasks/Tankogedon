@@ -28,6 +28,11 @@ void AAmmoBox::OnMeshOverlapBegin(class UPrimitiveComponent* OverlappedComp, cla
 	if (TankPawn)
 	{
 		TankPawn->SetupCannon(CannonClass);
+		ACannon* Cannon = TankPawn->GetCannon();
+		if (Cannon)
+		{
+			Cannon->AddAmmo(CountShells);
+		}
 		Destroy();
 	}
 }

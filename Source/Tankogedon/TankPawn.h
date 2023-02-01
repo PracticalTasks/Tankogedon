@@ -20,6 +20,7 @@ public:
 	void GetForwardValue(float Value);
 	void GetRightValue(float Value);
 	void GetRotationRightValue(float Value);
+	ACannon* GetCannon() const { return Cannon; };
 
 	void Fire();
 	void FireSpecial();
