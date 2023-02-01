@@ -1,15 +1,10 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "AmmoBox.h"
 #include "Components/StaticMeshComponent.h"
 #include "Cannon.h"
 #include "TankPawn.h"
 
-// Sets default values
 AAmmoBox::AAmmoBox()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 
 	USceneComponent* SceneComp = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
@@ -27,7 +22,7 @@ void AAmmoBox::OnMeshOverlapBegin(class UPrimitiveComponent* OverlappedComp, cla
 	ATankPawn* TankPawn = Cast<ATankPawn>(OtherActor);
 	if (TankPawn)
 	{
-		TankPawn->SetupCannon(TankPawn->EquippedCannonClass);
+		TankPawn->SetupCannon(CannonClass);
 		Destroy();
 	}
 }
