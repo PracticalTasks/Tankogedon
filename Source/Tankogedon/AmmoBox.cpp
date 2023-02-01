@@ -27,8 +27,7 @@ void AAmmoBox::OnMeshOverlapBegin(class UPrimitiveComponent* OverlappedComp, cla
 	ATankPawn* TankPawn = Cast<ATankPawn>(OtherActor);
 	if (TankPawn)
 	{
-		TankPawn->Cannon->AddAmmo(CountShells);
-//		TankPawn->SetupCannon(SecondCannonClass);
+		TankPawn->SetupCannon(TankPawn->SecondCannonClass);
 		Destroy();
 	}
 }
