@@ -95,18 +95,4 @@ void ATankPlayerController::changeWeapon()
 	{
 		TankPawn->changeWeapon();
 	}
-	//if (!TankPawn->Cannon)
-	//{
-	//	return;
-	//}
-	//if (TankPawn->Cannon->CannonType == ECannonType::FireProjecttile)
-	//{
-	//	TankPawn->SetupCannon(TankPawn->SecondCannonClass);
-	//	TankPawn->Cannon->CannonType = ECannonType::FireAltProjecttile;
-	//}
-	//else
-	//{
-	//	TankPawn->SetupCannon(TankPawn->EquippedCannonClass);
-	//}
-	//
 }
