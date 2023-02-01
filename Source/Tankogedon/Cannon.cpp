@@ -68,12 +68,10 @@ void ACannon::FireTrace()
 }
 
 void ACannon::AddAmmo(int CountShells)
-{
-	
+{	
 	shells += CountShells;
-	if (shells > CountShells)
-		shells = COUNT_SHELLS;
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, FString::Printf(TEXT("Shells is: &d"), shells));
+
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, FString::Printf(TEXT("Shells is: %d"), shells));
 }
 
 void ACannon::Fire()

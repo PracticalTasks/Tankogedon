@@ -98,7 +98,10 @@ void ATankPawn::SetupCannon(TSubclassOf<ACannon> newCannonClass)
 
 void ATankPawn::ChangeWeapon()
 {
-
+	TSubclassOf<ACannon> tmpCannon = EquippedCannonClass;
+	EquippedCannonClass = SecondCannonClass;
+	SecondCannonClass = tmpCannon;
+	SetupCannon(EquippedCannonClass);
 }
 
 void ATankPawn::BeginPlay()

@@ -38,7 +38,6 @@ protected:
 	int32 GetShells() { return shells; };
 
 protected:
-	const int32 COUNT_SHELLS = 20;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
 	class UStaticMeshComponent* CannonMesh;
 
@@ -58,5 +57,5 @@ protected:
 	float Damage = 1.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
-	int32 shells = COUNT_SHELLS;
+	int32 shells = 20;
 };
