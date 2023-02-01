@@ -36,11 +36,6 @@ void ACannon::AuxiliaryFireFunct()
 	}
 }
 
-void ACannon::AddAmmo(int CountShells)
-{
-	shells += CountShells;
-}
-
 void ACannon::Fire()
 {
 	if (!IsReadyToFire() || shells < 1)

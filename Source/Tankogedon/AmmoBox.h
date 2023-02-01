@@ -19,7 +19,8 @@ protected:
 	class UStaticMeshComponent* AmmoMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Companents")
-	//TSubclassOf<class ACannon> SecondCannonClass;
+	TSubclassOf<class ACannon> CannonClass;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Companents")
 	int CountShells = 10;
 
 protected:

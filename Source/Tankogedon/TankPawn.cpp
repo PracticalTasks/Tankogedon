@@ -127,8 +127,6 @@ void ATankPawn::MoveRotationRight(float DeltaTime)
 	float yawRotation = RotationSpeed * targetRotationRightAxisValue *
 		DeltaTime;
 	
-	//float LerpRotationValue = FMath::Lerp(targetRotationRightAxisValue, 
-	//	LerpRotationValue, TurretRotationInterpolationKey);
 	FRotator currentRotation = GetActorRotation();
 	yawRotation += currentRotation.Yaw;
 
@@ -150,10 +148,7 @@ void ATankPawn::TurretRotation(float DeltaTime)
 		FRotator newTurretRotation = FMath::Lerp(TurretRotation,
 			targetRotation, TurretRotationInterpolationKey);
 
-		//UE_LOG(LogTemp, Warning, TEXT("targetRotation: %s, LerpRotation: %s"),
-		//	*targetRotation.ToString(), *newTurretRotation.ToString());
 		TurretMesh->SetWorldRotation(newTurretRotation);
-
 	}
 }
 

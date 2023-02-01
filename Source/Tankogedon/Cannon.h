@@ -1,12 +1,9 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "GameStruct.h"
 #include "Components/ArrowComponent.h"
-//#include "TraceInsights/Public/Insights/Common/PaintUtils.h"
 #include "Cannon.generated.h"
 
 UCLASS()
@@ -19,7 +16,6 @@ public:
 
 	void Fire();
 	void FireSpecial();
-	void AddAmmo(int CountShells);
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
@@ -59,5 +55,5 @@ protected:
 	float Damage = 1.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
-	int32 shells = 50;
+	int32 shells = 20;
 };

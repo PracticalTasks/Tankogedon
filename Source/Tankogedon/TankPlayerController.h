@@ -13,9 +13,6 @@ class TANKOGEDON_API ATankPlayerController : public APlayerController
 public:
 	UPROPERTY()
 	class ATankPawn* TankPawn;
-
-	//UPROPERTY()
-	//class ACannon* Cannon;
 	
 	virtual void SetupInputComponent() override;
 	virtual void Tick(float DeltaSeconds) override;
