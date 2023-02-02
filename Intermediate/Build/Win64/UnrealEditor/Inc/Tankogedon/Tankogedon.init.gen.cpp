@@ -17,13 +17,13 @@ void EmptyLinkFunctionForGeneratedCodeTankogedon_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0xC061E125,
-				0xC0E55F95,
+				0x1CD0AAA0,
+				0xC9062D37,
 				METADATA_PARAMS(nullptr, 0)
 			};
 			UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_Tankogedon.OuterSingleton, PackageParams);
 		}
 		return Z_Registration_Info_UPackage__Script_Tankogedon.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_Tankogedon(Z_Construct_UPackage__Script_Tankogedon, TEXT("/Script/Tankogedon"), Z_Registration_Info_UPackage__Script_Tankogedon, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xC061E125, 0xC0E55F95));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_Tankogedon(Z_Construct_UPackage__Script_Tankogedon, TEXT("/Script/Tankogedon"), Z_Registration_Info_UPackage__Script_Tankogedon, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x1CD0AAA0, 0xC9062D37));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

@@ -23,6 +23,18 @@ public:
 	void GetForwardValue(float Value);
 	void GetRightValue(float Value);
 	void GetRotationRightValue(float Value);
+	void MoveForward(float DeltaTime);
+	void MoveRotationRight(float DeltaTime);
+	UFUNCTION()
+	TArray<FVector> GetPatrollingPoints() const { return PatrollingPoints; };
+	UFUNCTION()
+	float GetMovementAccurency() const { return MovementAccurency; };
+	UFUNCTION()
+	FVector GetTurretForwardVector() const;
+	UFUNCTION()
+	void RotateTurretTo(FVector TargetPosition);
+	FVector GetEyesPosition() const;
+
 
 protected:
 	virtual void BeginPlay() override;
@@ -46,14 +58,18 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement | Rotation");
 	float TurretRotationInterpolationKey = 0.1f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AI|Move params|Patrolpoints" , Meta = (MakeEditWidget = true))
+	TArray<FVector> PatrollingPoints;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AI|Moveparams | Accurency")
+	float MovementAccurency = 25;
+
 private: 
 	float targetForwardAxisValue = 0.0f;
 	float targetRightAxisValue = 0.0f;
 	float targetRotationRightAxisValue = 0.0f;
 
-	void MoveForward(float DeltaTime);
 	void MoveRight(float DeltaTime);
-	void MoveRotationRight(float DeltaTime);
 	void TurretRotation(float DeltaTime);
 	
 };
