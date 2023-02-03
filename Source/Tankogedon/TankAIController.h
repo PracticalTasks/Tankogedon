@@ -35,7 +35,6 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Timer")
 	float changeWeaponRate = 5.0f;
-
 	FTimerHandle timerChangeWeapon;
 protected:
 	virtual void BeginPlay() override;
