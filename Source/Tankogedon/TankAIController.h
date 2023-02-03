@@ -25,7 +25,7 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AI|Move params|Accurency")
 	float MovementAccurency;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Targeting")
-	float TargetingRange = 3000;
+	float TargetingRange = 5000;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Targeting")
 	float TargetingSpeed = 1.0;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Targeting")

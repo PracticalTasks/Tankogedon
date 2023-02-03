@@ -1,13 +1,12 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "GameStruct.h"
 #include "Components/ArrowComponent.h"
-//#include "TraceInsights/Public/Insights/Common/PaintUtils.h"
 #include "Cannon.generated.h"
+#include "Particles\ParticleSystemComponent.h"
+#include "Components\AudioComponent.h"
 
 UCLASS()
 class TANKOGEDON_API ACannon : public AActor
@@ -28,7 +27,8 @@ public:
 
 private:
 	void Reload();
-	void AuxiliaryFireFunct();
+	void FireProjectile();
+	void FireTrace();
 
 private:
 	bool bReadyToFire = true;
@@ -50,7 +50,7 @@ protected:
 	TSubclassOf <class AProjectile> ProjectileClass;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
-	float FireRate = 1.0f;
+	float FireRate = 0.5f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
 	float FireRange = 2000.0f;
@@ -60,4 +60,11 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fire param")
 	int32 shells = 50;
+
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Effects")
+	class UParticleSystemComponent* ShootEffect;
+
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Effects")
+	class UAudioComponent* AudioEffect;
+
 };

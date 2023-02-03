@@ -19,12 +19,17 @@ ACannon::ACannon()
 
 	CannonMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("CannonMesh"));
 	CannonMesh->SetupAttachment(RootComponent);
+	CannonMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
 	ProjectileSpawnPoint = CreateDefaultSubobject<UArrowComponent>(TEXT("ArrowComponent"));
 	ProjectileSpawnPoint->SetupAttachment(CannonMesh);
+
+	ShootEffect = CreateDefaultSubobject<UParticleSystemComponent>
+		(TEXT("ShootEffect"));
+	ShootEffect->SetupAttachment(ProjectileSpawnPoint);
 }
 
-void ACannon::AuxiliaryFireFunct()
+void ACannon::FireProjectile()
 {
 	--shells;
 	AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>
@@ -34,6 +39,11 @@ void ACannon::AuxiliaryFireFunct()
 	{
 		Projectile->Start();
 	}
+}
+
+void ACannon::FireTrace()
+{
+
 }
 
 void ACannon::AddAmmo(int CountShells)
@@ -50,14 +60,14 @@ void ACannon::Fire()
 	if (CannonType == ECannonType::FireProjecttile)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Purple, "Fire projectile");
-		AuxiliaryFireFunct();
+		FireProjectile();
 		UE_LOG(LogTemp, Display, TEXT("Ammo Fire projectile: %i"), shells);
 
 	}
 	else if(CannonType == ECannonType::FireAltProjecttile)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Yellow, "Fire alter projectile");
-		AuxiliaryFireFunct();
+		FireProjectile();
 		UE_LOG(LogTemp, Display, TEXT("Ammo Fire alter projectile: %i"), shells);
 	}
 	else
