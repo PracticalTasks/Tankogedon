@@ -48,4 +48,9 @@ protected:
 	float Accurency = 10;
 	const FString BodyMeshPath = "StaticMesh'/Game/CSC/Meshes/SM_CSC_Tower1.SM_CSC_Tower1'";
 	const FString TurretMeshPath = "StaticMesh'/Game/CSC/Meshes/SM_CSC_Gun1.SM_CSC_Gun1'";
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Timer")
+	float changeWeaponRate = 5.0f;
+	
+	FTimerHandle timerChangeWeapon;
 };

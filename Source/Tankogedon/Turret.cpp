@@ -12,6 +12,8 @@ ATurret::ATurret()
 	UStaticMesh * turretMeshTemp = LoadObject<UStaticMesh>(this, *TurretMeshPath);
 	if (turretMeshTemp)
 		TurretMesh->SetStaticMesh(turretMeshTemp);
+
+	
 }
 void ATurret::Tick(float DeltaTime)
 {
