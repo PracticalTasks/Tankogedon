@@ -111,7 +111,6 @@ void ACannon::Fire()
 
 	GetWorld()->GetTimerManager().SetTimer(ReloadTimer, this, 
 		&ACannon::Reload, FireRate, false);
-
 }
 
 void ACannon::FireSpecial()
@@ -127,7 +126,6 @@ void ACannon::FireSpecial()
 
 	GetWorld()->GetTimerManager().SetTimer(ReloadTimer, this,
 		&ACannon::Reload, FireRate, false);
-
 }
 
 bool ACannon::IsReadyToFire()
@@ -140,7 +138,6 @@ void ACannon::Reload()
 	bReadyToFire = true;
 }
 
-// Called when the game starts or when spawned
 void ACannon::BeginPlay()
 {
 	Super::BeginPlay();
@@ -172,10 +169,6 @@ void ACannon::OnMeshOverlapBegin(class UPrimitiveComponent* OverlappedComp, clas
 				*OtherActor->GetName());
 			OtherActor->Destroy();
 		}
-
-		//Destroy();
 	}
-
-
 }
 
