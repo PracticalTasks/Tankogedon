@@ -29,7 +29,7 @@ ACannon::ACannon()
 	ShootEffect->SetupAttachment(ProjectileSpawnPoint);
 }
 
-void ACannon::FireProjectile()
+void ACannon::fireProjectile()
 {
 	--shells;
 	AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>
@@ -41,14 +41,34 @@ void ACannon::FireProjectile()
 	}
 }
 
-void ACannon::FireTrace()
+void ACannon::fireTrace()
 {
+	--shells;
+	FHitResult hitResult;
+	FCollisionQueryParams traceParams = FCollisionQueryParams();
+	traceParams.AddIgnoredActor(this);
+	traceParams.bReturnPhysicalMaterial = false;
+	FVector Start = ProjectileSpawnPoint->GetComponentLocation();
+	FVector End = Start + ProjectileSpawnPoint->GetForwardVector() * FireRange;
 
-}
-
-void ACannon::AddAmmo(int CountShells)
-{
-	shells += CountShells;
+	if (GetWorld()->LineTraceSingleByChannel(hitResult, Start, End,
+		ECollisionChannel::ECC_Visibility, traceParams))
+	{
+		DrawDebugLine(GetWorld(), Start, hitResult.Location,
+			FColor::Red, false, 0.2f, 0, 5);
+		if (hitResult.GetActor())
+		{
+			AActor* OverlappedActor = hitResult.GetActor();
+			UE_LOG(LogTemp, Warning, TEXT("Overlapped actor: %s"),
+				*OverlappedActor->GetName());
+			OverlappedActor->Destroy();
+		}
+	}
+	else
+	{
+		DrawDebugLine(GetWorld(), Start, End,
+			FColor::Yellow, false, 0.2f, 0, 5);
+	}
 }
 
 void ACannon::Fire()
@@ -59,53 +79,22 @@ void ACannon::Fire()
 	}
 	if (CannonType == ECannonType::FireProjecttile)
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Purple, "Fire projectile");
-		FireProjectile();
-		UE_LOG(LogTemp, Display, TEXT("Ammo Fire projectile: %i"), shells);
-
-	}
-	else if(CannonType == ECannonType::FireAltProjecttile)
-	{
-		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Yellow, "Fire alter projectile");
-		FireProjectile();
-		UE_LOG(LogTemp, Display, TEXT("Ammo Fire alter projectile: %i"), shells);
+		fireProjectile();
 	}
 	else
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, "Fire trace");
-		--shells;
-		FHitResult hitResult;
-		FCollisionQueryParams traceParams = FCollisionQueryParams();
-		traceParams.AddIgnoredActor(this);
-		traceParams.bReturnPhysicalMaterial = false;
-		FVector Start = ProjectileSpawnPoint->GetComponentLocation();
-		FVector End = Start + ProjectileSpawnPoint->GetForwardVector() * FireRange;
-		
-		if (GetWorld()->LineTraceSingleByChannel(hitResult, Start, End, 
-			ECollisionChannel::ECC_Visibility, traceParams))
-		{
-			DrawDebugLine(GetWorld(), Start, hitResult.Location,
-				FColor::Red, false, 0.2f, 0, 5);
-			if (hitResult.GetActor())
-			{
-				AActor* OverlappedActor = hitResult.GetActor();
-				UE_LOG(LogTemp, Warning, TEXT("Overlapped actor: %s"),
-					*OverlappedActor->GetName());
-				OverlappedActor->Destroy();
-			}
-		}
-		else
-		{
-			DrawDebugLine(GetWorld(), Start, End,
-				FColor::Yellow, false, 0.2f, 0, 5);
-		}
-
+		fireTrace();
 	}
 
 	bReadyToFire = false;
 
-	GetWorld()->GetTimerManager().SetTimer(ReloadTimer, this, 
+	GetWorld()->GetTimerManager().SetTimer(ReloadTimer, this,
 		&ACannon::Reload, FireRate, false);
+}
+
+void ACannon::AddAmmo(int CountShells)
+{
+	shells += CountShells;
 }
 
 void ACannon::FireSpecial()
@@ -132,7 +121,6 @@ bool ACannon::IsReadyToFire()
 void ACannon::Reload()
 {
 	bReadyToFire = true;
-
 }
 
 // Called when the game starts or when spawned
@@ -141,7 +129,118 @@ void ACannon::BeginPlay()
 	Super::BeginPlay();
 
 	bReadyToFire = true;
-	
+
 }
+
+//void ACannon::FireProjectile()
+//{
+//	--shells;
+//	AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>
+//		(ProjectileClass, ProjectileSpawnPoint->GetComponentLocation(),
+//			ProjectileSpawnPoint->GetComponentRotation());
+//	if (Projectile)
+//	{
+//		Projectile->Start();
+//	}
+//}
+//
+//void ACannon::FireTrace()
+//{
+//
+//}
+//
+//
+//void ACannon::Fire()
+//{
+//	if (!IsReadyToFire() || shells < 1)
+//	{
+//		return;
+//	}
+//	if (CannonType == ECannonType::FireProjecttile)
+//	{
+//		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Purple, "Fire projectile");
+//		FireProjectile();
+//		UE_LOG(LogTemp, Display, TEXT("Ammo Fire projectile: %i"), shells);
+//
+//	}
+//	else if(CannonType == ECannonType::FireAltProjecttile)
+//	{
+//		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Yellow, "Fire alter projectile");
+//		FireProjectile();
+//		UE_LOG(LogTemp, Display, TEXT("Ammo Fire alter projectile: %i"), shells);
+//	}
+//	else
+//	{
+//		GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, "Fire trace");
+//		--shells;
+//		FHitResult hitResult;
+//		FCollisionQueryParams traceParams = FCollisionQueryParams();
+//		traceParams.AddIgnoredActor(this);
+//		traceParams.bReturnPhysicalMaterial = false;
+//		FVector Start = ProjectileSpawnPoint->GetComponentLocation();
+//		FVector End = Start + ProjectileSpawnPoint->GetForwardVector() * FireRange;
+//		
+//		if (GetWorld()->LineTraceSingleByChannel(hitResult, Start, End, 
+//			ECollisionChannel::ECC_Visibility, traceParams))
+//		{
+//			DrawDebugLine(GetWorld(), Start, hitResult.Location,
+//				FColor::Red, false, 0.2f, 0, 5);
+//			if (hitResult.GetActor())
+//			{
+//				AActor* OverlappedActor = hitResult.GetActor();
+//				UE_LOG(LogTemp, Warning, TEXT("Overlapped actor: %s"),
+//					*OverlappedActor->GetName());
+//				OverlappedActor->Destroy();
+//			}
+//		}
+//		else
+//		{
+//			DrawDebugLine(GetWorld(), Start, End,
+//				FColor::Yellow, false, 0.2f, 0, 5);
+//		}
+//
+//	}
+//
+//	bReadyToFire = false;
+//
+//	GetWorld()->GetTimerManager().SetTimer(ReloadTimer, this, 
+//		&ACannon::Reload, FireRate, false);
+//}
+//
+//void ACannon::FireSpecial()
+//{
+//	if (!IsReadyToFire())
+//	{
+//		return;
+//	}
+//
+//	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Green, "Fire special");
+//
+//	bReadyToFire = false;
+//
+//	GetWorld()->GetTimerManager().SetTimer(ReloadTimer, this,
+//		&ACannon::Reload, FireRate, false);
+//
+//}
+//
+//bool ACannon::IsReadyToFire()
+//{
+//	return bReadyToFire;
+//}
+//
+//void ACannon::Reload()
+//{
+//	bReadyToFire = true;
+//
+//}
+//
+//// Called when the game starts or when spawned
+//void ACannon::BeginPlay()
+//{
+//	Super::BeginPlay();
+//
+//	bReadyToFire = true;
+//	
+//}
 
 
