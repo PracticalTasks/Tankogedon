@@ -6,6 +6,7 @@
 #include "Components/ArrowComponent.h"
 #include "Particles\ParticleSystemComponent.h"
 #include "Components\AudioComponent.h"
+#include "Camera\CameraShakeBase.h"
 #include "Cannon.generated.h"
 
 UCLASS()
@@ -66,5 +67,12 @@ protected:
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Effects")
 	class UAudioComponent* AudioEffect;
+
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Effects")
+	//UForceFeedbackEffect* ShootForceEffect;
+	
+	UPROPERTY(EditAnywhere) 
+	TSubclassOf<class UCameraShakeBase> CameraShake;
+
 
 };

@@ -27,6 +27,13 @@ ACannon::ACannon()
 	ShootEffect = CreateDefaultSubobject<UParticleSystemComponent>
 		(TEXT("ShootEffect"));
 	ShootEffect->SetupAttachment(ProjectileSpawnPoint);
+	ShootEffect->SetAutoActivate(false);
+
+	AudioEffect = CreateDefaultSubobject<UAudioComponent>
+		(TEXT("AudioComponent"));
+	AudioEffect->SetupAttachment(SceneComp);
+	AudioEffect->SetAutoActivate(false);
+
 }
 
 void ACannon::fireProjectile()
@@ -86,6 +93,14 @@ void ACannon::Fire()
 		fireTrace();
 	}
 
+	if (ShootEffect)
+		ShootEffect->ActivateSystem();
+	
+	if (AudioEffect)
+		AudioEffect->Play(); 
+
+	if (CameraShake)
+		GetWorld()->GetFirstPlayerController()->ClientPlayCameraShake(CameraShake);
 	bReadyToFire = false;
 
 	GetWorld()->GetTimerManager().SetTimer(ReloadTimer, this,

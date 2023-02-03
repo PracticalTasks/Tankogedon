@@ -58,6 +58,10 @@ float ATankAIController::GetRotationValue()
 
 void ATankAIController::Targeting()
 {
+	if (!IsPlayerSeen() || !IsPlayerInRange())
+	{
+		return;
+	}
 	if (CanFire())
 		Fire();
 	else
@@ -66,8 +70,7 @@ void ATankAIController::Targeting()
 
 void ATankAIController::RotateToPlayer()
 {
-	if (IsPlayerInRange())
-		TankPawn->RotateTurretTo(PlayerPawn->GetActorLocation());
+	TankPawn->RotateTurretTo(PlayerPawn->GetActorLocation());
 }
 
 bool ATankAIController::IsPlayerInRange()
@@ -83,10 +86,6 @@ bool ATankAIController::IsPlayerInRange()
 
 bool ATankAIController::CanFire()
 {
-	if (!IsPlayerSeen())
-	{
-		return false;
-	}
 	FVector targetingDir = TankPawn->GetTurretForwardVector();
 	FVector dirToPlayer = PlayerPawn->GetActorLocation() -
 		TankPawn->GetActorLocation();
