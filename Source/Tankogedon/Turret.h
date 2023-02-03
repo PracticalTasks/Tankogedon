@@ -33,6 +33,7 @@ protected:
 	bool CanFire();
 	bool IsPlayerSeen();
 	FVector GetEyesPosition() const;
+	void changeWeapon();
 
 protected:
 	UPROPERTY()

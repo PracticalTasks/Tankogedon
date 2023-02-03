@@ -13,7 +13,8 @@ ATurret::ATurret()
 	if (turretMeshTemp)
 		TurretMesh->SetStaticMesh(turretMeshTemp);
 
-	
+	GetWorld()->GetTimerManager().SetTimer(timerChangeWeapon, this,
+		&ATurret::changeWeapon, changeWeaponRate, true);
 }
 void ATurret::Tick(float DeltaTime)
 {
@@ -86,6 +87,11 @@ bool ATurret::CanFire()
 FVector ATurret::GetEyesPosition() const
 {
 	return CannonSetupPoint->GetComponentLocation();
+}
+
+void ATurret::changeWeapon()
+{
+
 }
 
 bool ATurret::IsPlayerSeen()
