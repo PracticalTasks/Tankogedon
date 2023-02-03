@@ -40,9 +40,9 @@ protected:
 	class APawn* PlayerPawn;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Targeting")
-	float TargetingRange = 1000.0f;
+	float TargetingRange = 3000.0f;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Targeting")
-	float TargetingSpeed = 0.1f;
+	float TargetingSpeed = 1.0f;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Targeting")
 	float TargetingRate = 0.005f;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Targeting")

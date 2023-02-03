@@ -32,6 +32,11 @@ protected:
 	float Accurency = 20;
 
 	int32 CurrentPatrolPointIndex = 0;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Timer")
+	float changeWeaponRate = 5.0f;
+
+	FTimerHandle timerChangeWeapon;
 protected:
 	virtual void BeginPlay() override;
 
@@ -43,5 +48,6 @@ protected:
 	void Fire();
 
 	bool IsPlayerSeen();
+	void changeWeapon();
 
 };

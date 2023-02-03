@@ -14,18 +14,23 @@ void ATankAIController::BeginPlay()
 {
 	Super::BeginPlay();
 	TankPawn = Cast<ATankPawn>(GetPawn());
-	if (TankPawn)
+	if (!TankPawn)
 	{
-		PlayerPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
-		FVector pawnLocation = TankPawn->GetActorLocation();
-		MovementAccurency = TankPawn->GetMovementAccurency();
-		TArray<FVector> points = TankPawn->GetPatrollingPoints();
-		for (FVector point : points)
-		{
-			PatrollingPoints.Add(point + pawnLocation);
-		}
-		CurrentPatrolPointIndex = 0;
+		return;
 	}
+
+	PlayerPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
+	FVector pawnLocation = TankPawn->GetActorLocation();
+	MovementAccurency = TankPawn->GetMovementAccurency();
+	TArray<FVector> points = TankPawn->GetPatrollingPoints();
+	for (FVector point : points)
+	{
+		PatrollingPoints.Add(point + pawnLocation);
+	}
+	CurrentPatrolPointIndex = 0;
+
+	GetWorld()->GetTimerManager().SetTimer(timerChangeWeapon, this,
+		&ATankAIController::changeWeapon, changeWeaponRate, true);
 }
 
 float ATankAIController::GetRotationValue()
@@ -130,4 +135,12 @@ bool ATankAIController::IsPlayerSeen()
 	DrawDebugLine(GetWorld(), eyesPos, playerPos, FColor::Red, false, 0.5f, 0, 10.0f);
 	return false;
 
+}
+
+void ATankAIController::changeWeapon()
+{
+	TSubclassOf<ACannon> tmpCannon = TankPawn->EquippedCannonClass;
+	TankPawn->EquippedCannonClass = TankPawn->SecondCannonClass;
+	TankPawn->SecondCannonClass = tmpCannon;
+	TankPawn->SetupCannon(TankPawn->EquippedCannonClass);
 }
