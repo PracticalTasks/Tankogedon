@@ -115,5 +115,8 @@ void ATankPawn::TurretRotation(float DeltaTime)
 
 void ATankPawn::changeWeapon()
 {
-
+	TSubclassOf<ACannon> tmpCannon = EquippedCannonClass;
+	EquippedCannonClass = SecondCannonClass;
+	SecondCannonClass = tmpCannon;
+	SetupCannon(EquippedCannonClass);
 }
