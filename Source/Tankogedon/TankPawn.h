@@ -36,7 +36,6 @@ public:
 	FVector GetEyesPosition() const;
 	void changeWeapon();
 
-
 protected:
 	virtual void BeginPlay() override;
 

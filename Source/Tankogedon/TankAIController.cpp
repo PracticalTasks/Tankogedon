@@ -5,7 +5,6 @@ void ATankAIController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	TankPawn->GetForwardValue(1.0f);
-	//UE_LOG(LogTemp, Warning, TEXT("AI Rotation forwardAngle: %f rightAngle: %frotationValue:% f"), forwardAngle, rightAngle, rotationValue);
     TankPawn->GetRotationRightValue(GetRotationValue());
 
 	Targeting();

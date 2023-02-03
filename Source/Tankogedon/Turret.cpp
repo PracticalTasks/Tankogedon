@@ -1,5 +1,6 @@
 #include "Turret.h"
 #include "Engine/StaticMesh.h"
+#include "GameFramework/PlayerState.h"
 #include "Kismet/KismetMathLibrary.h"
 
 ATurret::ATurret()
@@ -11,6 +12,11 @@ ATurret::ATurret()
 	UStaticMesh * turretMeshTemp = LoadObject<UStaticMesh>(this, *TurretMeshPath);
 	if (turretMeshTemp)
 		TurretMesh->SetStaticMesh(turretMeshTemp);
+}
+void ATurret::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	Targeting();
 }
 
 void ATurret::BeginPlay()
@@ -33,10 +39,14 @@ void ATurret::Targeting()
 	if (!PlayerPawn)
 		return;
 
-	if (IsPlayerInRange())
+	if (!IsPlayerSeen() || !IsPlayerInRange())
 	{
-		RotateToPlayer();
+		return;
 	}
+
+
+	RotateToPlayer();
+
 	if (CanFire())
 	{
 		Fire();
@@ -69,5 +79,41 @@ bool ATurret::CanFire()
 	float aimAngle = FMath::RadiansToDegrees(acosf(FVector::DotProduct
 	(targetingDir, dirToPlayer)));
 	return aimAngle <= Accurency;
+}
+
+FVector ATurret::GetEyesPosition() const
+{
+	return CannonSetupPoint->GetComponentLocation();
+}
+
+bool ATurret::IsPlayerSeen()
+{
+	FVector playerPos = PlayerPawn->GetActorLocation();
+	FVector eyesPos = GetEyesPosition();
+	FHitResult hitResult;
+	FCollisionQueryParams traceParams =
+		FCollisionQueryParams(FName(TEXT("FireTrace")), true, this);
+	traceParams.bTraceComplex = true;
+	traceParams.AddIgnoredActor(this);
+	traceParams.bReturnPhysicalMaterial = false;
+
+	if (GetWorld()->LineTraceSingleByChannel(hitResult, eyesPos, playerPos,
+		ECollisionChannel::ECC_Visibility, traceParams))
+	{
+
+		if (hitResult.GetActor())
+		{
+			if (hitResult.GetActor() == PlayerPawn)
+			{
+				DrawDebugLine(GetWorld(), eyesPos, hitResult.Location,
+					FColor::Green, false, 0.5f, 0, 10.0f);
+			}
+			DrawDebugLine(GetWorld(), eyesPos, hitResult.Location,
+				FColor::Black, false, 0.5f, 0, 10.0f);
+			return hitResult.GetActor() == PlayerPawn;
+		}
+	}
+	DrawDebugLine(GetWorld(), eyesPos, playerPos, FColor::Red, false, 0.5f, 0, 10.0f);
+	return false;
 }
 

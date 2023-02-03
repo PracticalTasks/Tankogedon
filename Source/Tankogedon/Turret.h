@@ -9,6 +9,8 @@
 #include "DamageTaker.h"
 #include "HealthComponent.h"
 #include "ShootingMachines.h"
+#include "TankPawn.h"
+#include "TankAIController.h"
 #include "Turret.generated.h"
 
 class UStaticMeshComponent;
@@ -20,7 +22,8 @@ class TANKOGEDON_API ATurret : public AShootingMachines
 	
 public:	
 	ATurret();
-	
+	virtual void Tick(float DeltaTime) override;
+
 protected:
 	virtual void BeginPlay() override;
 	virtual void Destroyed() override;
@@ -28,6 +31,8 @@ protected:
 	void RotateToPlayer();
 	bool IsPlayerInRange();
 	bool CanFire();
+	bool IsPlayerSeen();
+	FVector GetEyesPosition() const;
 
 protected:
 	UPROPERTY()

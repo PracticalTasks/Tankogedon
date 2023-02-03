@@ -67,9 +67,6 @@ protected:
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Effects")
 	class UAudioComponent* AudioEffect;
-
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Effects")
-	//UForceFeedbackEffect* ShootForceEffect;
 	
 	UPROPERTY(EditAnywhere) 
 	TSubclassOf<class UCameraShakeBase> CameraShake;
