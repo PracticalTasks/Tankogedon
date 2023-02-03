@@ -4,9 +4,9 @@
 #include "GameFramework/Actor.h"
 #include "GameStruct.h"
 #include "Components/ArrowComponent.h"
-#include "Cannon.generated.h"
 #include "Particles\ParticleSystemComponent.h"
 #include "Components\AudioComponent.h"
+#include "Cannon.generated.h"
 
 UCLASS()
 class TANKOGEDON_API ACannon : public AActor
@@ -27,8 +27,8 @@ public:
 
 private:
 	void Reload();
-	void FireProjectile();
-	void FireTrace();
+	void fireProjectile();
+	void fireTrace();
 
 private:
 	bool bReadyToFire = true;

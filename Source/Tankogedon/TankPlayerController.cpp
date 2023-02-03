@@ -23,7 +23,7 @@ void ATankPlayerController::SetupInputComponent()
 		this, &ATankPlayerController::FireSpecial);
 
 	InputComponent->BindAction("SwapCannon", EInputEvent::IE_Pressed,
-		this, &ATankPlayerController::swapCannon);
+		this, &ATankPlayerController::changeWeapon);
 }
 
 void ATankPlayerController::Tick(float DeltaSeconds)
