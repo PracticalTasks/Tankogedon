@@ -12,9 +12,6 @@ ATurret::ATurret()
 	UStaticMesh * turretMeshTemp = LoadObject<UStaticMesh>(this, *TurretMeshPath);
 	if (turretMeshTemp)
 		TurretMesh->SetStaticMesh(turretMeshTemp);
-
-	GetWorld()->GetTimerManager().SetTimer(timerChangeWeapon, this,
-		&ATurret::changeWeapon, changeWeaponRate, true);
 }
 void ATurret::Tick(float DeltaTime)
 {
@@ -29,6 +26,9 @@ void ATurret::BeginPlay()
 	FTimerHandle targetingTimer;
 	GetWorld()->GetTimerManager().SetTimer(targetingTimer, this,
 		&ATurret::Targeting, TargetingRate, true, TargetingRate);
+
+	GetWorld()->GetTimerManager().SetTimer(timerChangeWeapon, this,
+		&ATurret::changeWeapon, changeWeaponRate, true);
 }
 
 void ATurret::Destroyed()
@@ -91,7 +91,10 @@ FVector ATurret::GetEyesPosition() const
 
 void ATurret::changeWeapon()
 {
-
+	TSubclassOf<ACannon> tmpCannon = EquippedCannonClass;
+	EquippedCannonClass = SecondCannonClass;
+	SecondCannonClass = tmpCannon;
+	SetupCannon(EquippedCannonClass);
 }
 
 bool ATurret::IsPlayerSeen()
