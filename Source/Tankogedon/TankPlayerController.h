@@ -30,7 +30,7 @@ protected:
 
 	void Fire();
 	void FireSpecial();
-	void swapCannon();
+	void changeWeapon();
 
 	FVector MousePos;
 };

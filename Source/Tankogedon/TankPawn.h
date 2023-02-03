@@ -34,6 +34,7 @@ public:
 	UFUNCTION()
 	void RotateTurretTo(FVector TargetPosition);
 	FVector GetEyesPosition() const;
+	void changeWeapon();
 
 
 protected:

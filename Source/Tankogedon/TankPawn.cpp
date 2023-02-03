@@ -110,16 +110,10 @@ void ATankPawn::TurretRotation(float DeltaTime)
 	{
 		FVector MousePos = TankController-> GetMousePosition();
 		RotateTurretTo(MousePos);
-		//FRotator targetRotation = UKismetMathLibrary::
-		//	FindLookAtRotation(GetActorLocation(),MousePos);
-		//FRotator TurretRotation = TurretMesh->GetComponentRotation();
-		//targetRotation.Pitch = TurretRotation.Pitch;
-		//targetRotation.Roll = TurretRotation.Roll;
-
-		//FRotator newTurretRotation = FMath::Lerp(TurretRotation,
-		//	targetRotation, TurretRotationInterpolationKey);
-
-		//TurretMesh->SetWorldRotation(newTurretRotation);
 	}
 }
 
+void ATankPawn::changeWeapon()
+{
+
+}
