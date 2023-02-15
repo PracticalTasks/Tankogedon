@@ -121,6 +121,9 @@ void ATankAIController::Initialize()
 
 bool ATankAIController::IsPlayerSeen()
 {
+	if (!PlayerPawn)
+		return false;
+
 	FVector playerPos = PlayerPawn->GetActorLocation();
 	FVector eyesPos = TankPawn->GetEyesPosition();
 	FHitResult hitResult;

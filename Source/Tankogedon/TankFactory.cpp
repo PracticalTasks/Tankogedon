@@ -69,7 +69,9 @@ void ATankFactory::Die()
 	{
 		ptrMapLoader->SetIsActivated(true);
 	}
-		
+	
+	idxTankCount = tankCount;
+
 	UStaticMesh* buildingMeshTemp = LoadObject<UStaticMesh>(this, *DestroyMeshPath);
 	if (buildingMeshTemp)
 		BuildingMesh->SetStaticMesh(buildingMeshTemp);
