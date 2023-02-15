@@ -5,7 +5,7 @@
 
 ATurret::ATurret()
 {
-	UStaticMesh* bodyMeshTemp = LoadObject<UStaticMesh>(this, *BodyMeshPath);
+	UStaticMesh* bodyMeshTemp = LoadObject<UStaticMesh>(this, *BuildingMeshPath);
 	if (bodyMeshTemp)
 		BodyMesh->SetStaticMesh(bodyMeshTemp);
 

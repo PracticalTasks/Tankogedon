@@ -5,10 +5,12 @@
 #include "DamageTaker.h"
 #include "HealthComponent.h"
 #include "ShootingMachines.h"
+#include "Engine/TargetPoint.h"
 #include "TankPawn.generated.h"
 
 class UStaticMeshComponent;
 class ACannon;
+class ATargetPoint;
 
 UCLASS()
 
@@ -26,7 +28,8 @@ public:
 	void MoveForward(float DeltaTime);
 	void MoveRotationRight(float DeltaTime);
 	UFUNCTION()
-	TArray<FVector> GetPatrollingPoints() const { return PatrollingPoints; };
+	TArray<FVector> GetPatrollingPoints() const;
+	void SetPatrollingPoints(TArray<ATargetPoint*> newPatrollingPoints);
 	UFUNCTION()
 	float GetMovementAccurency() const { return MovementAccurency; };
 	UFUNCTION()
@@ -59,7 +62,7 @@ protected:
 	float TurretRotationInterpolationKey = 0.1f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AI|Move params|Patrolpoints" , Meta = (MakeEditWidget = true))
-	TArray<FVector> PatrollingPoints;
+	TArray<ATargetPoint*> PatrollingPoints;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AI|Moveparams | Accurency")
 	float MovementAccurency = 25;

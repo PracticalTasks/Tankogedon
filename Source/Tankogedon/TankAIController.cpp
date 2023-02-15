@@ -4,6 +4,13 @@
 void ATankAIController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	if (!TankPawn)
+		Initialize();
+
+	if (!TankPawn)
+		return;
+
 	TankPawn->GetForwardValue(1.0f);
     TankPawn->GetRotationRightValue(GetRotationValue());
 
@@ -13,24 +20,9 @@ void ATankAIController::Tick(float DeltaTime)
 void ATankAIController::BeginPlay()
 {
 	Super::BeginPlay();
-	TankPawn = Cast<ATankPawn>(GetPawn());
-	if (!TankPawn)
-	{
-		return;
-	}
 
-	PlayerPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
-	FVector pawnLocation = TankPawn->GetActorLocation();
-	MovementAccurency = TankPawn->GetMovementAccurency();
-	TArray<FVector> points = TankPawn->GetPatrollingPoints();
-	for (FVector point : points)
-	{
-		PatrollingPoints.Add(point + pawnLocation);
-	}
-	CurrentPatrolPointIndex = 0;
+	Initialize();
 
-	GetWorld()->GetTimerManager().SetTimer(timerChangeWeapon, this,
-		&ATankAIController::changeWeapon, changeWeaponRate, true);
 }
 
 float ATankAIController::GetRotationValue()
@@ -103,6 +95,28 @@ bool ATankAIController::CanFire()
 void ATankAIController::Fire()
 {
 	TankPawn->Fire();
+}
+
+void ATankAIController::Initialize()
+{
+	TankPawn = Cast<ATankPawn>(GetPawn());
+	if (!TankPawn)
+	{
+		return;
+	}
+
+	PlayerPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
+	FVector pawnLocation = TankPawn->GetActorLocation();
+	MovementAccurency = TankPawn->GetMovementAccurency();
+	TArray<FVector> points = TankPawn->GetPatrollingPoints();
+	for (FVector point : points)
+	{
+		PatrollingPoints.Add(point);
+	}
+	CurrentPatrolPointIndex = 0;
+
+	GetWorld()->GetTimerManager().SetTimer(timerChangeWeapon, this,
+		&ATankAIController::changeWeapon, changeWeaponRate, true);
 }
 
 bool ATankAIController::IsPlayerSeen()

@@ -26,12 +26,19 @@ protected:
 	float MoveRate = 0.1f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
+	float timeToDestroy = 5.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
 	float Damage = 1.0f;
 
 	FTimerHandle MovementTimer;
+	FTimerHandle DestroyTimer;
 
 	UFUNCTION()
 	void Move();
+
+	UFUNCTION()
+	void destroyByTime();
 
 	UFUNCTION()
 	void OnMeshOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor*

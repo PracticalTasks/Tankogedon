@@ -17,6 +17,7 @@ void EmptyLinkFunctionForGeneratedCodeTankPawn() {}
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	TANKOGEDON_API UClass* Z_Construct_UClass_ATankPlayerController_NoRegister();
+	ENGINE_API UClass* Z_Construct_UClass_ATargetPoint_NoRegister();
 // End Cross Module References
 	DEFINE_FUNCTION(ATankPawn::execRotateTurretTo)
 	{
@@ -225,7 +226,7 @@ void EmptyLinkFunctionForGeneratedCodeTankPawn() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_TurretRotationInterpolationKey_MetaData[];
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_TurretRotationInterpolationKey;
-		static const UECodeGen_Private::FStructPropertyParams NewProp_PatrollingPoints_Inner;
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_PatrollingPoints_Inner;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_PatrollingPoints_MetaData[];
 #endif
@@ -298,7 +299,7 @@ void EmptyLinkFunctionForGeneratedCodeTankPawn() {}
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ATankPawn_Statics::NewProp_TurretRotationInterpolationKey = { "TurretRotationInterpolationKey", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ATankPawn, TurretRotationInterpolationKey), METADATA_PARAMS(Z_Construct_UClass_ATankPawn_Statics::NewProp_TurretRotationInterpolationKey_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ATankPawn_Statics::NewProp_TurretRotationInterpolationKey_MetaData)) };
-	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_ATankPawn_Statics::NewProp_PatrollingPoints_Inner = { "PatrollingPoints", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(nullptr, 0) };
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ATankPawn_Statics::NewProp_PatrollingPoints_Inner = { "PatrollingPoints", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, 0, Z_Construct_UClass_ATargetPoint_NoRegister, METADATA_PARAMS(nullptr, 0) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ATankPawn_Statics::NewProp_PatrollingPoints_MetaData[] = {
 		{ "Category", "AI|Move params|Patrolpoints" },
@@ -361,9 +362,9 @@ void EmptyLinkFunctionForGeneratedCodeTankPawn() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Tankogedon_Source_Tankogedon_TankPawn_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_ATankPawn, ATankPawn::StaticClass, TEXT("ATankPawn"), &Z_Registration_Info_UClass_ATankPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ATankPawn), 701713336U) },
+		{ Z_Construct_UClass_ATankPawn, ATankPawn::StaticClass, TEXT("ATankPawn"), &Z_Registration_Info_UClass_ATankPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ATankPawn), 3560484347U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Tankogedon_Source_Tankogedon_TankPawn_h_3558989443(TEXT("/Script/Tankogedon"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Tankogedon_Source_Tankogedon_TankPawn_h_3006444584(TEXT("/Script/Tankogedon"),
 		Z_CompiledInDeferFile_FID_Tankogedon_Source_Tankogedon_TankPawn_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Tankogedon_Source_Tankogedon_TankPawn_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

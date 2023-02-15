@@ -31,6 +31,10 @@ void AProjectile::Start()
 {
 	GetWorld()->GetTimerManager().SetTimer(MovementTimer, this, &AProjectile::Move,
 		MoveRate, true, 0.0f); 
+
+	//Вызывает метод уничтожения снаряда по времени
+	GetWorld()->GetTimerManager().SetTimer(DestroyTimer, this, &AProjectile::destroyByTime,
+		timeToDestroy, true, timeToDestroy);
 }
 
 void AProjectile::Move()
@@ -38,6 +42,11 @@ void AProjectile::Move()
 	FVector nextPosition = GetActorLocation() + GetActorForwardVector() *
 		MoveSpeed * MoveRate;
 	SetActorLocation(nextPosition);
+}
+
+void AProjectile::destroyByTime()
+{
+	Destroy();
 }
 
 void AProjectile::OnMeshOverlapBegin(class UPrimitiveComponent*

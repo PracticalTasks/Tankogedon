@@ -67,6 +67,12 @@
     <ClInclude Include="..\..\Source\Tankogedon\HealthComponent.h">
       <Filter>Source\Tankogedon</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\Tankogedon\MapLoader.cpp">
+      <Filter>Source\Tankogedon</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Tankogedon\MapLoader.h">
+      <Filter>Source\Tankogedon</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\Tankogedon\Projectile.cpp">
       <Filter>Source\Tankogedon</Filter>
     </ClCompile>
@@ -83,6 +89,12 @@
       <Filter>Source\Tankogedon</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\Tankogedon\TankAIController.h">
+      <Filter>Source\Tankogedon</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Tankogedon\TankFactory.cpp">
+      <Filter>Source\Tankogedon</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Tankogedon\TankFactory.h">
       <Filter>Source\Tankogedon</Filter>
     </ClInclude>
     <None Include="..\..\Source\Tankogedon\Tankogedon.Build.cs">

@@ -82,6 +82,22 @@ void ATankPawn::MoveRotationRight(float DeltaTime)
 	SetActorRotation(newRotation);
 }
 
+TArray<FVector> ATankPawn::GetPatrollingPoints() const
+{
+	TArray<FVector> points;
+	for (ATargetPoint* point : PatrollingPoints)
+	{
+		points.Add(point->GetActorLocation());
+	}
+
+	return points;
+}
+
+void ATankPawn::SetPatrollingPoints(TArray<ATargetPoint*> newPatrollingPoint)
+{
+	PatrollingPoints = newPatrollingPoint;
+}
+
 FVector ATankPawn::GetTurretForwardVector() const
 {
 	return TurretMesh->GetForwardVector();

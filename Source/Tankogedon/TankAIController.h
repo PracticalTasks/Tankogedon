@@ -45,6 +45,7 @@ protected:
 	bool IsPlayerInRange();
 	bool CanFire();
 	void Fire();
+	void Initialize();
 
 	bool IsPlayerSeen();
 	void changeWeapon();
