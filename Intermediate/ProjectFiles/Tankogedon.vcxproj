@@ -172,7 +172,6 @@
     <None Include="..\..\Tankogedon.uproject"/>
     <None Include="..\..\Source\Tankogedon.Target.cs"/>
     <None Include="..\..\Source\TankogedonEditor.Target.cs"/>
-    <None Include="..\..\.gitattributes"/>
     <None Include="..\..\.gitignore"/>
     <None Include="..\..\Config\DefaultEditor.ini"/>
     <None Include="..\..\Config\DefaultEngine.ini"/>
