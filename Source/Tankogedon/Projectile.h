@@ -13,7 +13,9 @@ class TANKOGEDON_API AProjectile : public AActor
 public:	
 	AProjectile();
 
-	void Start();
+	virtual void Start();
+	UFUNCTION()
+	virtual void Move();
 
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
@@ -31,11 +33,12 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
 	float Damage = 1.0f;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Damage")
+	float PushForce = 1000;
+
+
 	FTimerHandle MovementTimer;
 	FTimerHandle DestroyTimer;
-
-	UFUNCTION()
-	void Move();
 
 	UFUNCTION()
 	void destroyByTime();

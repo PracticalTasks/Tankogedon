@@ -17,10 +17,6 @@ ATankFactory::ATankFactory()
 		(TEXT("BuildingMesh"));
 	BuildingMesh->SetupAttachment(BoxCollision);
 
-	UStaticMesh* buildingMeshTemp = LoadObject<UStaticMesh>(this, *BuildingMeshPath);
-	if (buildingMeshTemp)
-		BuildingMesh->SetStaticMesh(buildingMeshTemp);
-
 	TankSpawnPoint = CreateDefaultSubobject<UArrowComponent>
 		(TEXT("TankSpawnPoint"));
 	TankSpawnPoint->SetupAttachment(BuildingMesh);
@@ -81,5 +77,14 @@ void ATankFactory::DamageTaked(float DamageValue)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Tank factory damage: %f, health: %f"),
 		DamageValue, HealthComponent);
+}
+
+void ATankFactory::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+
+	UStaticMesh* buildingMeshTemp = LoadObject<UStaticMesh>(this, *BuildingMeshPath);
+	if (buildingMeshTemp)
+		BuildingMesh->SetStaticMesh(buildingMeshTemp);
 }
 

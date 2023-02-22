@@ -73,6 +73,18 @@
     <ClInclude Include="..\..\Source\Tankogedon\MapLoader.h">
       <Filter>Source\Tankogedon</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\Tankogedon\PhysicsComponent.cpp">
+      <Filter>Source\Tankogedon</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Tankogedon\PhysicsComponent.h">
+      <Filter>Source\Tankogedon</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Tankogedon\PhysicsProjectile.cpp">
+      <Filter>Source\Tankogedon</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Tankogedon\PhysicsProjectile.h">
+      <Filter>Source\Tankogedon</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\Tankogedon\Projectile.cpp">
       <Filter>Source\Tankogedon</Filter>
     </ClCompile>

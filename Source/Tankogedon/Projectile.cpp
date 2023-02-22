@@ -1,16 +1,12 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "Projectile.h"
 #include "GameFramework/Actor.h"
 #include "Components/StaticMeshComponent.h"
 #include "DamageTaker.h"
 #include <Components/SceneComponent.h>
+#include <Components/PrimitiveComponent.h>
 
-// Sets default values
 AProjectile::AProjectile()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 
 	USceneComponent* SceneComp = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
@@ -71,9 +67,30 @@ void AProjectile::OnMeshOverlapBegin(class UPrimitiveComponent*
 		}
 		else
 		{
-			UE_LOG(LogTemp, Warning, TEXT("Overlapped actor: %s"),
-				*OtherActor->GetName());
-			OtherActor->Destroy();
+			//UE_LOG(LogTemp, Warning, TEXT("Overlapped actor: %s"),
+			//	*OtherActor->GetName());
+			//OtherActor->Destroy();
+
+			UPrimitiveComponent* mesh =
+				Cast<UPrimitiveComponent>(OtherActor->GetRootComponent());
+			if (mesh)
+			{
+				if (mesh->IsSimulatingPhysics())
+				{
+					FVector forceVector =
+						OtherActor->GetActorLocation() - GetActorLocation();
+					forceVector.Normalize();
+					mesh->AddImpulse(forceVector * PushForce, NAME_None,
+						true);
+					//mesh->AddForce(forceVector * PushForce, NAME_None,
+					//	true);
+				}
+				else
+				{
+					OtherActor->Destroy();
+				}
+			}
+
 		}
 
 		Destroy();

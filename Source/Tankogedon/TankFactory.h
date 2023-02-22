@@ -30,6 +30,7 @@ protected:
 	void Die();
 	UFUNCTION()
 	void DamageTaked(float DamageValue);
+	void PostInitializeComponents() override;
 
 protected:
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Components")

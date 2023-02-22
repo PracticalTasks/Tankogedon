@@ -3,16 +3,6 @@
 #include "GameFramework/PlayerState.h"
 #include "Kismet/KismetMathLibrary.h"
 
-ATurret::ATurret()
-{
-	UStaticMesh* bodyMeshTemp = LoadObject<UStaticMesh>(this, *BuildingMeshPath);
-	if (bodyMeshTemp)
-		BodyMesh->SetStaticMesh(bodyMeshTemp);
-
-	UStaticMesh * turretMeshTemp = LoadObject<UStaticMesh>(this, *TurretMeshPath);
-	if (turretMeshTemp)
-		TurretMesh->SetStaticMesh(turretMeshTemp);
-}
 void ATurret::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -95,6 +85,20 @@ void ATurret::changeWeapon()
 	EquippedCannonClass = SecondCannonClass;
 	SecondCannonClass = tmpCannon;
 	SetupCannon(EquippedCannonClass);
+}
+
+void ATurret::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+
+	UStaticMesh* bodyMeshTemp = LoadObject<UStaticMesh>(this, *BuildingMeshPath);
+	if (bodyMeshTemp)
+		BodyMesh->SetStaticMesh(bodyMeshTemp);
+
+	UStaticMesh* turretMeshTemp = LoadObject<UStaticMesh>(this, *TurretMeshPath);
+	if (turretMeshTemp)
+		TurretMesh->SetStaticMesh(turretMeshTemp);
+
 }
 
 bool ATurret::IsPlayerSeen()

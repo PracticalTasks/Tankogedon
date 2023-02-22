@@ -21,7 +21,6 @@ class TANKOGEDON_API ATurret : public AShootingMachines
 	GENERATED_BODY()
 	
 public:	
-	ATurret();
 	virtual void Tick(float DeltaTime) override;
 
 protected:
@@ -34,6 +33,7 @@ protected:
 	bool IsPlayerSeen();
 	FVector GetEyesPosition() const;
 	void changeWeapon();
+	void PostInitializeComponents() override;
 
 protected:
 	UPROPERTY()
