@@ -70,20 +70,20 @@ void AProjectile::OnMeshOverlapBegin(class UPrimitiveComponent*
 			//UE_LOG(LogTemp, Warning, TEXT("Overlapped actor: %s"),
 			//	*OtherActor->GetName());
 			//OtherActor->Destroy();
-
+			
 			UPrimitiveComponent* mesh =
 				Cast<UPrimitiveComponent>(OtherActor->GetRootComponent());
 			if (mesh)
 			{
 				if (mesh->IsSimulatingPhysics())
 				{
-					FVector forceVector =
-						OtherActor->GetActorLocation() - GetActorLocation();
-					forceVector.Normalize();
-					mesh->AddImpulse(forceVector * PushForce, NAME_None,
-						true);
-					//mesh->AddForce(forceVector * PushForce, NAME_None,
-					//	true);
+					for (int32 i{}; i < idxForce; ++i)
+					{
+						FVector forceVector =
+							OtherActor->GetActorLocation() - GetActorLocation();
+						forceVector.Normalize();
+						mesh->AddForce(forceVector * PushForce, NAME_None, true);
+					}
 				}
 				else
 				{

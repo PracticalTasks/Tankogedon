@@ -94,10 +94,17 @@ void APhysicsProjectile::Explode()
 				{
 					if (mesh->IsSimulatingPhysics())
 					{
-						FVector forceVector = otherActor->GetActorLocation() -
-							GetActorLocation();
-						forceVector.Normalize();
-						mesh->AddImpulse(forceVector * PushForce, NAME_None, true);
+						for (int32 i{}; i < idxForce; ++i)
+						{
+							FVector forceVector =
+								otherActor->GetActorLocation() - GetActorLocation();
+							forceVector.Normalize();
+							mesh->AddForce(forceVector * PushForce, NAME_None, true);
+						}
+						//FVector forceVector = otherActor->GetActorLocation() -
+						//	GetActorLocation();
+						//forceVector.Normalize();
+						//mesh->AddImpulse(forceVector * PushForce, NAME_None, true);
 					}
 				}
 			}

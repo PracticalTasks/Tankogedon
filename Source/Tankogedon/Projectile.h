@@ -5,6 +5,8 @@
 #include "Components/SphereComponent.h"
 #include "Projectile.generated.h"
 
+int32 idxForce = 0;
+
 UCLASS()
 class TANKOGEDON_API AProjectile : public AActor
 {
@@ -36,6 +38,8 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Damage")
 	float PushForce = 1000;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
+	int32 idxForce = 20;
 
 	FTimerHandle MovementTimer;
 	FTimerHandle DestroyTimer;
