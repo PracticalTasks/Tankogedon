@@ -69,7 +69,7 @@ void APhysicsProjectile::Explode()
 	FQuat Rotation = FQuat::Identity;
 	bool sweepResult = GetWorld()->SweepMultiByChannel(AttackHit, startPos,
 		endPos, Rotation, ECollisionChannel::ECC_Visibility, Shape, params);
-	//GetWorld()->DebugDrawTraceTag = "Explode Trace";
+	GetWorld()->DebugDrawTraceTag = "Explode Trace";
 	if (sweepResult)
 	{
 		for (FHitResult hitResult : AttackHit)
