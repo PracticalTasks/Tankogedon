@@ -41,9 +41,13 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Components")
 	int32 idxForce = 20;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExplodeRadius")
+	float ExplodeRadius = 400.0f;
+
 	FTimerHandle MovementTimer;
 	FTimerHandle DestroyTimer;
 
+protected:
 	UFUNCTION()
 	void destroyByTime();
 
@@ -51,5 +55,7 @@ protected:
 	void OnMeshOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor*
 		OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool
 		bFromSweep, const FHitResult& SweepResult);
+
+	void Explode();
 
 };

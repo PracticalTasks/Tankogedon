@@ -35,18 +35,18 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category =
 		"Movement|Trajectory")
 	bool ShowTrajectory = false;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ExplodeRadius")
-	float ExplodeRadius = 400.0f;
 	UPROPERTY(BlueprintReadWrite, Category = "Movement params")
 	FVector MoveVector;
 	UPROPERTY(BlueprintReadWrite, Category = "Movement params")
 	TArray<FVector> CurrentTrajectory;
 	UPROPERTY(BlueprintReadWrite, Category = "Movement params")
 	int32 TrajectoryPointIndex;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Explode")
+	bool explode = true;
 
 protected:
 	virtual void Move() override;
-	void Explode();
+
 
 	
 };

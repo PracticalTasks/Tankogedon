@@ -99,3 +99,59 @@ void AProjectile::OnMeshOverlapBegin(class UPrimitiveComponent*
 
 }
 
+void AProjectile::Explode()
+{
+	FVector startPos = GetActorLocation();
+	FVector endPos = startPos + FVector(0.1f);
+	FCollisionShape Shape = FCollisionShape::MakeSphere(ExplodeRadius);
+	FCollisionQueryParams params = FCollisionQueryParams::DefaultQueryParam;
+	params.AddIgnoredActor(this);
+	params.bTraceComplex = true;
+	params.TraceTag = "Explode Trace";
+	TArray<FHitResult> AttackHit;
+	FQuat Rotation = FQuat::Identity;
+	bool sweepResult = GetWorld()->SweepMultiByChannel(AttackHit, startPos,
+		endPos, Rotation, ECollisionChannel::ECC_Visibility, Shape, params);
+	GetWorld()->DebugDrawTraceTag = "Explode Trace";
+	if (sweepResult)
+	{
+		for (FHitResult hitResult : AttackHit)
+		{
+			AActor* otherActor = hitResult.GetActor();
+			if (!otherActor)
+				continue;
+			IDamageTaker* damageTakerActor = Cast<IDamageTaker>(otherActor);
+			if (damageTakerActor)
+			{
+				FDamageData damageData;
+				damageData.DamageValue = Damage;
+				damageData.Instigator = GetOwner();
+				damageData.DamageMaker = this;
+				damageTakerActor->TakeDamage(damageData);
+			}
+			else
+			{
+				UPrimitiveComponent* mesh =
+					Cast<UPrimitiveComponent>(otherActor->GetRootComponent());
+				if (mesh)
+				{
+					if (mesh->IsSimulatingPhysics())
+					{
+						for (int32 i{}; i < idxForce; ++i)
+						{
+							FVector forceVector =
+								otherActor->GetActorLocation() - GetActorLocation();
+							forceVector.Normalize();
+							mesh->AddForce(forceVector * PushForce, NAME_None, true);
+						}
+						//FVector forceVector = otherActor->GetActorLocation() -
+						//	GetActorLocation();
+						//forceVector.Normalize();
+						//mesh->AddImpulse(forceVector * PushForce, NAME_None, true);
+					}
+				}
+			}
+		}
+	}
+}
+

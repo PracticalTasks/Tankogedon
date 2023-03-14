@@ -115,8 +115,8 @@ void ATankAIController::Initialize()
 	}
 	CurrentPatrolPointIndex = 0;
 
-	GetWorld()->GetTimerManager().SetTimer(timerChangeWeapon, this,
-		&ATankAIController::changeWeapon, changeWeaponRate, true);
+	//GetWorld()->GetTimerManager().SetTimer(timerChangeWeapon, this,
+	//	&ATankAIController::changeWeapon, changeWeaponRate, true);
 }
 
 bool ATankAIController::IsPlayerSeen()
