@@ -46,8 +46,6 @@ void APhysicsProjectile::Move()
 			if(explode)
 				Explode();
 			Destroy();
-
-
 		}
 		else
 		{
