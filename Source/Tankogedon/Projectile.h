@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "DamageTaker.h"
 #include "Components/SphereComponent.h"
 #include "Projectile.generated.h"
 
@@ -33,7 +34,7 @@ protected:
 	float timeToDestroy = 5.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
-	float Damage = 1.0f;
+	float damage = 1.0f;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Damage")
 	float PushForce = 1000;
@@ -52,10 +53,11 @@ protected:
 	void destroyByTime();
 
 	UFUNCTION()
-	void OnMeshOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor*
+	virtual void OnMeshOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor*
 		OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool
 		bFromSweep, const FHitResult& SweepResult);
 
 	void Explode();
+	void Damage(IDamageTaker* damageTakerActor, AActor* otherActor);
 
 };

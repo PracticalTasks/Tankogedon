@@ -21,7 +21,7 @@ void APhysicsProjectile::Start()
 		for (FVector position : CurrentTrajectory)
 		{
 			DrawDebugSphere(GetWorld(), position, 5, 8, 
-				 FColor::Purple, true, 1, 0, 2);
+				 FColor::Red, true, 1, 0, 2);
 		}
 	}
 	TrajectoryPointIndex = 0;
@@ -47,6 +47,7 @@ void APhysicsProjectile::Move()
 				Explode();
 			Destroy();
 
+
 		}
 		else
 		{
@@ -58,3 +59,11 @@ void APhysicsProjectile::Move()
 	}
 }
 
+
+void APhysicsProjectile::OnMeshOverlapBegin(class UPrimitiveComponent*
+	OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent*
+	OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	Explode();
+	Destroy();
+}

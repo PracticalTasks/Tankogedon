@@ -1,7 +1,6 @@
 #include "Projectile.h"
 #include "GameFramework/Actor.h"
 #include "Components/StaticMeshComponent.h"
-#include "DamageTaker.h"
 #include <Components/SceneComponent.h>
 #include <Components/PrimitiveComponent.h>
 
@@ -16,11 +15,6 @@ AProjectile::AProjectile()
 	ProjectileMesh->SetupAttachment(RootComponent);
 	ProjectileMesh->OnComponentBeginOverlap.AddDynamic(this, &AProjectile::OnMeshOverlapBegin);
 	ProjectileMesh->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel1);
-
-	//SphereCollision = CreateDefaultSubobject<USphereComponent>(TEXT("BoxCollision"));
-	//SphereCollision->SetupAttachment(ProjectileMesh);
-	//SphereCollision->SetCollisionObjectType(ECollisionChannel::ECC_GameTraceChannel1);
-	//SphereCollision->OnComponentBeginOverlap.AddDynamic(this, &AProjectile::OnMeshOverlapBegin);
 }
 
 void AProjectile::Start()
@@ -59,7 +53,7 @@ void AProjectile::OnMeshOverlapBegin(class UPrimitiveComponent*
 		if (DamageActor)
 		{
 			FDamageData damageData;
-			damageData.DamageValue = Damage;
+			damageData.DamageValue = damage;
 			damageData.Instigator = Owner;
 			damageData.DamageMaker = this;
 
@@ -121,34 +115,35 @@ void AProjectile::Explode()
 			if (!otherActor)
 				continue;
 			IDamageTaker* damageTakerActor = Cast<IDamageTaker>(otherActor);
-			if (damageTakerActor)
+			Damage(damageTakerActor, otherActor);
+		}
+	}
+}
+
+void AProjectile::Damage(IDamageTaker* damageTakerActor, AActor* otherActor)
+{
+	if (damageTakerActor)
+	{
+		FDamageData damageData;
+		damageData.DamageValue = damage;
+		damageData.Instigator = GetOwner();
+		damageData.DamageMaker = this;
+		damageTakerActor->TakeDamage(damageData);
+	}
+	else
+	{
+		UPrimitiveComponent* mesh =
+			Cast<UPrimitiveComponent>(otherActor->GetRootComponent());
+		if (mesh)
+		{
+			if (mesh->IsSimulatingPhysics())
 			{
-				FDamageData damageData;
-				damageData.DamageValue = Damage;
-				damageData.Instigator = GetOwner();
-				damageData.DamageMaker = this;
-				damageTakerActor->TakeDamage(damageData);
-			}
-			else
-			{
-				UPrimitiveComponent* mesh =
-					Cast<UPrimitiveComponent>(otherActor->GetRootComponent());
-				if (mesh)
+				for (int32 i{}; i < idxForce; ++i)
 				{
-					if (mesh->IsSimulatingPhysics())
-					{
-						for (int32 i{}; i < idxForce; ++i)
-						{
-							FVector forceVector =
-								otherActor->GetActorLocation() - GetActorLocation();
-							forceVector.Normalize();
-							mesh->AddForce(forceVector * PushForce, NAME_None, true);
-						}
-						//FVector forceVector = otherActor->GetActorLocation() -
-						//	GetActorLocation();
-						//forceVector.Normalize();
-						//mesh->AddImpulse(forceVector * PushForce, NAME_None, true);
-					}
+					FVector forceVector =
+						otherActor->GetActorLocation() - GetActorLocation();
+					forceVector.Normalize();
+					mesh->AddForce(forceVector * PushForce, NAME_None, true);
 				}
 			}
 		}

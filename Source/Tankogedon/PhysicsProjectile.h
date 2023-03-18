@@ -47,6 +47,11 @@ protected:
 protected:
 	virtual void Move() override;
 
+	//UFUNCTION()
+	void OnMeshOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor*
+		OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool
+		bFromSweep, const FHitResult& SweepResult) override;
+
 
 	
 };
